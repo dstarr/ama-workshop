@@ -24,6 +24,32 @@
 
   <div class="maincopy">
     <p>
+      Several settings are seen at the top of the technical configuration page.
+    </p>
+    <ol>
+      <li>
+        The version number is a 3-part (1.0.0 for example) versioning number you may increment when updating the plan. 
+        Typically start at 1.0.0 and increment the number 
+        if you later change the technical configuration in some way, like changing the ZIP file in the next step.
+      </li>
+      <li>
+        The ZIP file containing your Managed application artifacts. createUiDefinition.json and mainTemplate.json go in the ZIP file.
+      </li>
+      <li>
+        Enabling JIT access allows cusomers to control when you are able to access the resources
+        to perform updates. This allows more control for the customer on update events.
+      </li>
+      <li>
+        The notification endpoint URL specifies a webhook that will get called as the application is provisioned.
+        You may have a need to respond to lifecycle events such as "Success" that occur when the anaged application 
+        is created. If you have no need to respond to these events, this field is left blank. An Azure function can work well here when needed.
+      </li>
+      <li>
+        Customizing customer actions allows setting specific permissions that the customer will
+        have on the resources created in the managed resource group.
+      </li>
+    </ol>
+    <p>
       Click near the bottom of the screen to scroll down and see more of the Technical configuration page.
     </p>
   </div>
