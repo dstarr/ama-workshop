@@ -3,90 +3,55 @@
     "handler": "Microsoft.Azure.CreateUIDef",
     "version": "0.1.2-preview",
     "parameters": {
-        "basics": [
-            {}
-        ],
-        "steps": [
+      "basics": [
+        {}
+      ],
+      "steps": [
+        {
+          "name": "applicationSettings",
+          "label": "Application Settings",
+          "subLabel": {
+            "preValidation": "Configure your application settings",
+            "postValidation": "Done"
+          },
+          "bladeTitle": "Application Settings",
+          "elements": [
             {
-                "name": "textBox",
-                "label": "Storage Account Prefix",
-                "bladeTitle": "Storage Account Prefix",
-                "subLabel": {
-                    "preValidation": "Enter a prefix for your Storage Account Prefix",
-                    "postValidation": "Done"
-                },
-                "elements": [
-                    {
-                        "name": "nameInstance",
-                        "type": "Microsoft.Common.TextBox",
-                        "label": "Storage Account Prefix",
-                        "toolTip": "Use only allowed characters",
-                        "placeholder": "",
-                        "constraints": {
-                            "required": true,
-                            "validations": [
-                                {
-                                    "regex": "^[a-zA-Z][a-z0-9A-Z]{3,3}$",
-                                    "message": "Only alphanumeric characters are allowed, and the value must be 4 characters long."
-                                }
-                            ]
-                        },
-                        "visible": true
-                    }
-                ]
-            },            
+              "name": "funcname",
+              "type": "Microsoft.Common.TextBox",
+              "label": "Name of the function to be created",
+              "toolTip": "Name of the function to be created",
+              "visible": true,
+              "constraints": {
+                "required": true
+              }
+            },
             {
-                "name": "apiBladeStep",
-                "label": "API Calls",
-                "elements": [
-                    {
-                        "name": "apiResourceGroups",
-                        "type": "Microsoft.Solutions.ArmApiControl",
-                        "toolTip": "This is an API that you will never see.",
-                        "request": {
-                            "method": "GET",
-                            "path": "[concat(subscription().id, '/resourcegroups?api-version=2020-06-01')]"
-                        }
-                    },
-                    {
-                        "name": "ddlResourceGroups",
-                        "type": "Microsoft.Common.DropDown",
-                        "label": "Existing Resource Groups",
-                        "toolTip": "Existing Resource Groups",
-                        "multiselect": true,
-                        "constraints": {
-                            "allowedValues": "[map(steps('apiBladeStep').apiResourceGroups.value, (item) => parse(concat('{\"label\":\"', item.name, '\",\"value\":\"', item.name, '\"}')))]",
-                            "required": true
-                        },
-                        "visible": true
-                    },
-                    {
-                        "name": "apiStorageAccounts",
-                        "type": "Microsoft.Solutions.ArmApiControl",
-                        "toolTip": "This is an API that you will never see.",
-                        "request": {
-                            "method": "GET",
-                            "path": "[concat(subscription().id, '/providers/Microsoft.Storage/storageAccounts?api-version=2019-06-01')]"
-                        }
-                    },
-                    {
-                        "name": "ddlStorageAccounts",
-                        "type": "Microsoft.Common.DropDown",
-                        "label": "Existing Storage Accounts",
-                        "toolTip": "Existing Storage Accounts",
-                        "constraints": {
-                            "allowedValues": "[map(steps('apiBladeStep').apiStorageAccounts.value, (item) => parse(concat('{\"label\":\"', item.name, '\",\"value\":\"', item.name, '\"}')))]",
-                            "required": true
-                        },
-                        "visible": true
-                    }
-                ]
+              "name": "storagename",
+              "type": "Microsoft.Common.TextBox",
+              "label": "Name of the storage to be created",
+              "toolTip": "Name of the storage to be created",
+              "visible": true,
+              "constraints": {
+                "required": true
+              },
+              "defaultValue": "store573euhm732gb4"
+            },
+            {
+              "name": "zipFileBlobUri",
+              "type": "Microsoft.Common.TextBox",
+              "defaultValue": "https://github.com/Azure/azure-quickstart-templates/tree/master/101-custom-rp-with-function/artifacts/functionzip/functionpackage.zip",
+              "label": "The Uri to the uploaded function zip file",
+              "toolTip": "The Uri to the uploaded function zip file",
+              "visible": true
             }
-        ],
-        "outputs": {
-            "storageAccountNamePrefix": "[steps('storageConfig').storageAccounts.prefix]",
-            "storageAccountType": "[steps('storageConfig').storageAccounts.type]",
-            "location": "[location()]"
+          ]
         }
+      ],
+      "outputs": {
+        "funcname": "[steps('applicationSettings').funcname]",
+        "storageName": "[steps('applicationSettings').storagename]",
+        "zipFileBlobUri": "[steps('applicationSettings').zipFileBlobUri]"
+      }
     }
-}
+  }
