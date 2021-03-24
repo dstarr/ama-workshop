@@ -18,19 +18,6 @@
     },
     "resources": [
         {
-            "apiVersion": "2020-06-01",
-            "name": "pid-e06042d9-dac3-416c-94bf-a6b5d1a68ff2",
-            "type": "Microsoft.Resources/deployments",
-            "properties": {
-                "mode": "Incremental",
-                "template": {
-                    "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
-                    "contentVersion": "1.0.0.0",
-                    "resources": []
-                }
-            }
-        },
-        {
             "type": "Microsoft.Storage/storageAccounts",
             "name": "[variables('storageAccountName')]",
             "apiVersion": "2019-06-01",
