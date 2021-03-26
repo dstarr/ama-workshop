@@ -128,36 +128,6 @@
             "sku": {
                 "name": "Standard_LRS"
             }
-        },
-        {
-            "apiVersion": "[variables('customrpApiversion')]",
-            "type": "Microsoft.CustomProviders/resourceProviders",
-            "name": "[variables('customProviderName')]",
-            "location": "[parameters('location')]",
-            "properties": {
-                "actions": [
-                    {
-                        "name": "ping",
-                        "routingType": "Proxy",
-                        "endpoint": "[listSecrets(resourceId('Microsoft.Web/sites/functions', parameters('funcname'), 'HttpTrigger1'), '2018-02-01').trigger_url]"
-                    },
-                    {
-                        "name": "users/contextAction",
-                        "routingType": "Proxy",
-                        "endpoint": "[listSecrets(resourceId('Microsoft.Web/sites/functions', parameters('funcname'), 'HttpTrigger1'), '2018-02-01').trigger_url]"
-                    }
-                ],
-                "resourceTypes": [
-                    {
-                        "name": "users",
-                        "routingType": "Proxy,Cache",
-                        "endpoint": "[listSecrets(resourceId('Microsoft.Web/sites/functions', parameters('funcname'), 'HttpTrigger1'), '2018-02-01').trigger_url]"
-                    }
-                ]
-            },
-            "dependsOn": [
-                "[concat('Microsoft.Web/sites/',parameters('funcname'))]"
-            ]
         }
     ],
     "outputs": {}
