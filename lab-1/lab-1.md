@@ -215,7 +215,9 @@ Here you will update the `createUiDefinition.json` file to create an installatio
 "storageAccountType": "[steps('storageBlade').storageAccount.type]"
 ```
 
-## Use the ARM template test toolkit
+## Use the ARM template test toolkit (optional)
+
+**Perform this step if you aren't running low on time.**
 
 In this section, you will download a tool used in testing ARM templates and use it to test your mainTemplate.json and createUiDefinition.json files.
 
