@@ -1,252 +1,325 @@
-# Lab 3: Customizing the Managed Application UX
+# Lab 4: Implementing custom providers
+
 Azure Managed Applications Workshop
 
-## Lab Overview
+## Lab overview
 
-In this lab you will further customize the functionality of `createUiDefinitio.json` and then customize the actual Managed Applicaiton instance working with `viewDefinition.json`. Finally, you will deploy this new functionality using the same publication technique you used in Lab 1.
+In this lab you will customize and deploy a managed application with functionality to manage and store custom resources.
 
-# Exercise 1: Customize the installer
+# Exercise 1: Deploy the function package
 
-In this exercise you will customize `createUiDefinition.json` with some dynamic behavior.
+In this exercise you will deploy a packaged Azure function to a storage account, making it ready for deployment by an ARM template.
 
-## Getting started
+## Create a storage account
 
-1. In VS Code, open the file `lab-4 > begin > createUiDefinition.json`
-2. Open the [Create UI Definition Sandbox](https://portal.azure.com/?feature.customPortal=false#blade/Microsoft_Azure_CreateUIDef/SandboxBlade)
-3. Paste the contents of the file in VS Code into the sandbox window.
-4. Click the Preview button on the sandbox. You will see a very uncustomized experience.
+1. Create a new Azure storage account
+2. Put it in a new resource group named "AMALab5"
 
-## Adding a textbox
+## Upoad the function application
 
-In this section you will add a new step to the `configureUiDefinition.json` file and validate the input for a textbox.
+1. In the blob storage of your new storage account, create a container named "function".
+2. Upload the `lab-5/begin/functionpackage.zip` file to the new container.
+3. Click on the ZIP file and then copy the URL for that blob.
+4. Paste the URL to a location for use later.
 
-1. In the code file in VS Code, add the following step
+# Exercise 2: Set up the ARM template
+
+In this exercise you will add the custom provider resources to the `mainTemplate.json` ARM template for a managed application. 
+
+## Add the function package URL
+
+1. Open the `lab-5/begin/mainTemplate.json` file for editing.
+2. Find the following JSON.
+
+```json
+"zipFileBlobUri": {
+    "type": "string",
+    "defaultValue": "CHANGE_THIS",
+    "metadata": {
+        "description": "The Uri to the uploaded function zip file"
+    }
+}
+```
+3. Replace `CHANGE_THIS` with the URL of the function app package you copied in the previous step.
+
+## Add the custom provider resource
+
+1. Find the resources section and note there are already 3 resources defined.
+2. Add the following JSON to the array of resources so the ARM template will create the custom resource provider.
 
 ```json
 {
-    "name": "textBox",
-    "label": "Storage Account Prefix",
-    "bladeTitle": "Storage Account Prefix",
-    "subLabel": {
-        "preValidation": "Enter a prefix for your storage account prefix",
-        "postValidation": "Done"
+    "apiVersion": "[variables('customrpApiversion')]",
+    "type": "Microsoft.CustomProviders/resourceProviders",
+    "name": "[variables('customProviderName')]",
+    "location": "[parameters('location')]",
+    "properties": {
+        "actions": [],
+        "resourceTypes": []
     },
-    "elements": []
+    "dependsOn": [
+        "[concat('Microsoft.Web/sites/',parameters('funcname'))]"
+    ]
 }
+
 ```
 
-2. Paste the new file contents into the sandbox and preview your work. You will see a new tab named **Storage Account Prefix**.
+## Add custom actions
 
-3. Add the following element to the newly created step.
+1. Add the following actions to the `actions` array.
 
 ```json
 {
-    "name": "nameInstance",
-    "type": "Microsoft.Common.TextBox",
-    "label": "Storage Account Prefix",
-    "toolTip": "Use only allowed characters",
-    "placeholder": "",
-    "constraints": {
-        "required": true
-    },
-    "visible": true
+    "name": "ping",
+    "routingType": "Proxy",
+    "endpoint": "[listSecrets(resourceId('Microsoft.Web/sites/functions', parameters('funcname'), 'HttpTrigger1'), '2018-02-01').trigger_url]"
+},
+{
+    "name": "users/contextAction",
+    "routingType": "Proxy",
+    "endpoint": "[listSecrets(resourceId('Microsoft.Web/sites/functions', parameters('funcname'), 'HttpTrigger1'), '2018-02-01').trigger_url]"
 }
 ```
 
-4. Preview your work in the sandbox.
+## Add the custom resource type
 
-5. Try typing some letters into the Storage Account Prefix textbox. Note you can type as few or as many letters as you like.
-
-We want to constrain the allowed values in the textbox using regular expressions such that only 4 characters may be entered.
-
-6. Add the following JSON to the `constraints` section.
+1. Find the `resourceTypes` array.
+2. Add the following resource type to the array.
 
 ```json
-"validations": [
+{
+    "name": "users",
+    "routingType": "Proxy,Cache",
+    "endpoint": "[listSecrets(resourceId('Microsoft.Web/sites/functions', parameters('funcname'), 'HttpTrigger1'), '2018-02-01').trigger_url]"
+}
+```
+
+# Exercise 3: Set up the view definition
+
+In this exercise you will add the custom provider elements to the `viewDefinition.json` that defines the interface for the managed application. You will add UI elements that make use of the function application for customizing the managed application.
+
+## Add the overview command
+
+1. Open the `lab-5/begin/viewDefinition.json` file for editing.
+2. Find the **overview** section and add the following JSON after the **description** to declare a command. This command will appear at the top of the managed application.
+
+```json
+"commands": [
     {
-        "regex": "^[a-zA-Z][a-z0-9A-Z]{3,3}$",
-        "message": "Only alphanumeric characters are allowed, and the value must be 4 characters long."
+        "displayName": "Ping Action",
+        "path": "/customping",
+        "icon": "LaunchCurrent"
     }
 ]
 ```
-
-7. Preview your work in the sandbox. Now you must match the regular expression for your prefix or you receive an error message.
-
-## Adding an API call
-
-In this section you will add a new step to the `configureUiDefinition.json` file and make calls to the Azure API, binding the return body to a dropdown list.
-
-1. In the code file in VS Code, add the following step
-
-```json
-{
-    "name": "apiBladeStep",
-    "label": "API Calls",
-    "elements": []
-}
-```
-
-2. Paste the new file contents into the sandbox and preview your work. You will see a new step, **API Calls**,  added to the install experience.
-
-3. Add  the following element to the step. The below JSON representes an API call that will be made from the createUiDefinition Experience
-
-```json
-{
-    "name": "apiResourceGroups",
-    "type": "Microsoft.Solutions.ArmApiControl",
-    "toolTip": "This is an API that you will never see.",
-    "request": {
-        "method": "GET",
-        "path": "[concat(subscription().id, '/resourcegroups?api-version=2020-06-01')]"
-    }
-}
-```
-
-4. Add  the following element to the step. The below JSON defines a dropdown that will be bound to the API call.
-
-```json
-{
-    "name": "ddlResourceGroups",
-    "type": "Microsoft.Common.DropDown",
-    "label": "Existing Resource Groups",
-    "toolTip": "Existing Resource Groups",
-    "multiselect": true,
-    "constraints": {
-        "allowedValues": "[map(steps('apiBladeStep').apiResourceGroups.value, (item) => parse(concat('{\"label\":\"', item.name, '\",\"value\":\"', item.name, '\"}')))]",
-        "required": true
-    },
-    "visible": true
-}
-```
-
-2. Paste the new file contents into the sandbox and preview your work. Note that selecting the dropbox retrieves all resource groups present in your subscription.
-
-3. Let's add one more API call just to see it working. Add the following elements into the **API Calls** step. This will create one ore dropdown bound to all storage accounts in your subscription.
-
-```json
-{
-    "name": "apiStorageAccounts",
-    "type": "Microsoft.Solutions.ArmApiControl",
-    "toolTip": "This is an API that you will never see.",
-    "request": {
-        "method": "GET",
-        "path": "[concat(subscription().id, '/providers/Microsoft.Storage/storageAccounts?api-version=2019-06-01')]"
-    }
-},
-{
-    "name": "ddlStorageAccounts",
-    "type": "Microsoft.Common.DropDown",
-    "label": "Existing Storage Accounts",
-    "toolTip": "Existing Storage Accounts",
-    "constraints": {
-        "allowedValues": "[map(steps('apiBladeStep').apiStorageAccounts.value, (item) => parse(concat('{\"label\":\"', item.name, '\",\"value\":\"', item.name, '\"}')))]",
-        "required": true
-    },
-    "visible": true
-}
-```
-4. Paste the new file contents into the sandbox and preview your work.
-
-# Exercise 2: Customize the Managed Application
-
-In this exercise you will customize the `viewDefinition.json` file in the same directory you've been working in. The file starts off with no custom behavior defined.
-
-1. Add the following view to the `views` array. This customizes the text on the front page of the managed application.
+The **overview** view should now look like this.
 
 ```json
 {
     "kind": "Overview",
     "properties": {
-    "header": "Welcome to Azure Managed Applications",
-    "description": "This managed application is for **exercise purposes**."
+        "header": "Welcome to ...",
+        "description": "This Managed application ...",
+        "commands": [
+            {
+                "displayName": "Ping Action",
+                "path": "/customping",
+                "icon": "LaunchCurrent"
+            }
+        ]
     }
 }
 ```
 
-2. Now customize the managed application by adding some custom charts. Add the following view to the file.
+## Add the custom resources UI
+
+1. Find the `"resourceType": "users"` value.
+2. Paste the following `createUIDefinition` section below `"resourceType": "users"`.
 
 ```json
-{
-    "kind": "Metrics",
-    "properties": {
-    "displayName": "Sample Metrics",
-    "version": "1.0.0",
-    "charts": []
-}
-```
-
-3. Add the following chart to the `charts` array.
-
-```json
-{
-    "displayName": "Availability chart",
-    "chartType": "Bar",
-    "metrics": [
-        {
-        "name": "Availability",
-        "aggregationType": "avg",
-        "resourceType": "Microsoft.Storage/storageAccounts"
+"createUIDefinition": {
+    "parameters": {
+        "steps": [
+            {
+                "name": "add",
+                "label": "Add user",
+                "elements": [
+                    {
+                        "name": "name",
+                        "label": "User's Full Name",
+                        "type": "Microsoft.Common.TextBox",
+                        "defaultValue": "",
+                        "toolTip": "Provide a full user name.",
+                        "constraints": {
+                            "required": true
+                        }
+                    },
+                    {
+                        "name": "location",
+                        "label": "User's Location",
+                        "type": "Microsoft.Common.TextBox",
+                        "defaultValue": "",
+                        "toolTip": "Provide a Location.",
+                        "constraints": {
+                            "required": true
+                        }
+                    }
+                ]
+            }
+        ],
+        "outputs": {
+            "name": "[steps('add').name]",
+            "properties": {
+                "FullName": "[steps('add').name]",
+                "Location": "[steps('add').location]"
+            }
         }
-    ]
+    }
 }
 ```
+Note the above is a fully formed createUIDefinition as you might find in a dedicated file of the same name.
 
-4. It is possible to have more than one chart in the charts array. Add the following chart to the charts array.
+## Add commands
+
+1. After the `createUIDefinition` property, add the following JSON to define the command that will be executed.
 
 ```json
-{
-    "displayName": "Transactions Chart",
-    "chartType": "Area",
-    "metrics": [
-        {
-        "name": "Transactions",
-        "aggregationType": "sum",
-        "resourceType": "Microsoft.Storage/storageAccounts"
-        }
-    ]
-}
+"commands": [
+    {
+        "displayName": "Custom Context Action",
+        "path": "users/contextAction",
+        "icon": "Start"
+    }
+]
 ```
+## Add columns for layout
 
-# Exercise 3: Deploy the Azure Managed Application with Service Catalog
+1. Under the commands array, add the following JSON to define the layout for showing any custom resources.
 
-With all of these changes in place, deploy the new files into a Service catalog managed application 
-definition, just as you did in Lab 1.
+```json
+"columns": [
+    {
+        "key": "properties.FullName",
+        "displayName": "Full Name"
+    },
+    {
+        "key": "properties.Location",
+        "displayName": "Location",
+        "optional": true
+    }
+]
+```
+You now have a fully formed `viewDefinition.json`.    
 
-## Creating the `app.zip` package
 
-1. Create a ZIP file that contains these 3 files at the root of the ZIP.
+# Exercise 4: Deploy the managed application package
+
+In this exercise you will add the managed application artifacts to a storage account, making them ready for deployment.
+
+## Create the deployment package
+
+ZIP the following files into a ZIP file with the files at the root.
 
 - createUiDefinition.json
 - mainTemplate.json
 - viewDefinition.json
 
-2.	Name your ZIP file `app.zip`.
+## Upload the package to the storage account
 
-    **Note:** If you are using a Mac, it is important you don’t pick up any hidden files from your file system.
+1. In the storage account you created earlier, create a new container named "arm".
+2. Upload your ZIP file into this container.
+3. Copy the URL for this blob and paste it somewhere so you have easy access to it later.
 
-3. Upload `app.zip` to the deployment storage account, overwriting the existing `app.zip` in your storage account.
+# Exercise 5: Deploy the managed application
 
-## Creating the Service Catalog Managed Application Definition
+In this exercise you will create a new Managed Application Definition and use it to deploy the managed application.
 
-1.	In your resource group, add a **Service Catalog Managed Application Definition**.
+## Create the managed application definition
 
-2.	On the creation form, use the following values.
-    - Name: ma-03
-    - Display name: ma-03
-    - Package file uri: The URI of the blob you just uploaded
-    - Deployment Mode: Complete
-    - Lock level: None
+1. Create a new "Service catalog managed application definition" in the Azure portal.
+2. Fill it out as shown below.
 
-3. Select the Create button
+![Service catalog managed application definition](./images/01.png)
+![Service catalog managed application definition](./images/02.png)
 
-## Install the application 
+## Deploy the managed application
 
-1.	From within your resource group, click the Service catalog managed application definition you just created.
-2.	Select **Deploy from definition**.
-3.	Go through the setup screens and create the managed application.
+After creating the AMA Definition, deploy it as a managed application.
 
+# Exercise 6: Using custom resources
 
+In this exercise you will use the custom provider functionality you added to the managed appliciation.
 
+## Running the ping action
 
+1. Navigate to the newly created managed application.
+2. At the top of the page, find the button labeled "Ping Action."
 
+This button was defined in the Overview section of `viewDefinition.json` as a command.
 
+3. Click the button to send a ping to the function application that was deployed. A successful return looks like the following.
+
+![Successful ping](./images/03.png)
+
+## Managing users
+
+1. In the left hand menu of the managed application, find the enu item labeled "Users" under the "Resources" section.
+2. Click the "Users" button. You are directed to a screen showing a list of user names. The list is currently empty.
+
+> This screen layout was defined by the `columns` section of `viewDefinition.json`.
+
+### Add new users
+
+When creating a new user, you are actually creating a new Azure resource.
+
+1. Click Add
+
+> This screen was defined by the `createUIDefinition`  section of `viewDefinition.json`.
+
+2. Enter a new user's full name and location.
+3. Review the new resource to ensure it passes validation. and submit the new resource.
+
+> You can now see the new Azure resource in the list of users.
+
+4. Add another user.
+
+### Inspecting the user resource id
+
+1. Click on one of the users in the list.
+
+> This resource overview shows the containing resource group and subscription like any other resource in Azure.
+
+2. Click the "Properties" menu item on the left.
+3. Scroll down to inspect the "Resource ID" property.
+
+> This resource ID demostrates this resource is addressable via Azure APIs like any other resource in Azure.
+
+### Inspecting user storage
+
+Now that we've seen this is an Azure resource, let's look at where it is stored.
+
+1. Navigate to the resource's managed resource group.
+2. Open the storage account that was created in the resource group.
+3. From the left hand menu, open the "Storage Exlporer" menu item.
+4. Expand TABLES as shown below.
+
+![Tables](./images/04.png)
+
+5. Click on the customResource table.
+6. Inspect the custom resources that were created by the resource provider.
+7. Scrolling to the right shows the DATA column, which contains the JSON representation of each resource you created.
+
+### Deleting a user
+
+1. Navigate back to the managed application you created.
+2. Click the "Users" menu item on the left.
+3. Click on a user resource.
+4. On the resource's Overview page, click the Delete button and confirm deletion.
+
+You now only see one user resource.
+
+You may go back to the storage table to see the record for that rescource no longer exists.
+
+# Congratulations
+
+In this lab you used custom resource providers defined in ARM templates to create custom resources.
