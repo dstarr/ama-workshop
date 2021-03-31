@@ -1,0 +1,4 @@
+{
+    "$schema": "https://raw.githubusercontent.com/Azure/azure-resource-manager-schemas/master/schemas/viewdefinition/0.0.1-preview/ViewDefinition.json",
+    "views": []
+}
