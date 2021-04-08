@@ -39,7 +39,7 @@
                     {
                         "name": "zipFileBlobUri",
                         "type": "Microsoft.Common.TextBox",
-                        "defaultValue": "https://ecamacptutorial.blob.core.windows.net/function/functionpackage.zip",
+                        "defaultValue": "https://amawslab4.blob.core.windows.net/lab-4/functionpackage.zip",
                         "label": "The Uri to the uploaded function zip file",
                         "toolTip": "The Uri to the uploaded function zip file",
                         "visible": true
