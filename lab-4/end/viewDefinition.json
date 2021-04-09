@@ -17,19 +17,19 @@
         {
             "kind": "CustomResources",
             "properties": {
-                "displayName": "Users",
+                "displayName": "Autos",
                 "version": "1.0.0.0",
-                "resourceType": "users",
+                "resourceType": "autos",
                 "createUIDefinition": {
                     "parameters": {
                         "steps": [
                             {
                                 "name": "add",
-                                "label": "Add user",
+                                "label": "Add Automobile",
                                 "elements": [
                                     {
-                                        "name": "name",
-                                        "label": "User's Full Name",
+                                        "name": "make",
+                                        "label": "Make",
                                         "type": "Microsoft.Common.TextBox",
                                         "defaultValue": "",
                                         "toolTip": "Provide a full user name.",
@@ -38,8 +38,8 @@
                                         }
                                     },
                                     {
-                                        "name": "location",
-                                        "label": "User's Location",
+                                        "name": "model",
+                                        "label": "Model",
                                         "type": "Microsoft.Common.TextBox",
                                         "defaultValue": "",
                                         "toolTip": "Provide a Location.",
@@ -53,27 +53,27 @@
                         "outputs": {
                             "name": "[steps('add').name]",
                             "properties": {
-                                "FullName": "[steps('add').name]",
-                                "Location": "[steps('add').location]"
+                                "Make": "[steps('add').make]",
+                                "Model": "[steps('add').model]"
                             }
                         }
                     }
                 },
                 "commands": [
                     {
-                        "displayName": "Custom Context Action",
-                        "path": "users/contextAction",
+                        "displayName": "Custom Action",
+                        "path": "autos/contextAction",
                         "icon": "Start"
                     }
                 ],
                 "columns": [
                     {
-                        "key": "properties.FullName",
-                        "displayName": "Full Name"
+                        "key": "properties.Make",
+                        "displayName": "Make"
                     },
                     {
-                        "key": "properties.Location",
-                        "displayName": "Location",
+                        "key": "properties.Model",
+                        "displayName": "Model",
                         "optional": true
                     }
                 ]

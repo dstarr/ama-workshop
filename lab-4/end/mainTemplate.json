@@ -5,11 +5,6 @@
         "location": {
             "type": "string",
             "defaultValue": "eastus",
-            "allowedValues": [
-                "australiaeast",
-                "eastus",
-                "westeurope"
-            ],
             "metadata": {
                 "description": "Location for the resources."
             }
@@ -142,14 +137,14 @@
                         "endpoint": "[listSecrets(resourceId('Microsoft.Web/sites/functions', parameters('funcname'), 'HttpTrigger1'), '2018-02-01').trigger_url]"
                     },
                     {
-                        "name": "users/contextAction",
+                        "name": "autos/contextAction",
                         "routingType": "Proxy",
                         "endpoint": "[listSecrets(resourceId('Microsoft.Web/sites/functions', parameters('funcname'), 'HttpTrigger1'), '2018-02-01').trigger_url]"
                     }
                 ],
                 "resourceTypes": [
                     {
-                        "name": "users",
+                        "name": "autos",
                         "routingType": "Proxy,Cache",
                         "endpoint": "[listSecrets(resourceId('Microsoft.Web/sites/functions', parameters('funcname'), 'HttpTrigger1'), '2018-02-01').trigger_url]"
                     }
