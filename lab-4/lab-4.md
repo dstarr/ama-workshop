@@ -75,7 +75,7 @@ In this exercise you will add the custom provider resources to the `mainTemplate
     "endpoint": "[listSecrets(resourceId('Microsoft.Web/sites/functions', parameters('funcname'), 'HttpTrigger1'), '2018-02-01').trigger_url]"
 },
 {
-    "name": "users/contextAction",
+    "name": "autos/contextAction",
     "routingType": "Proxy",
     "endpoint": "[listSecrets(resourceId('Microsoft.Web/sites/functions', parameters('funcname'), 'HttpTrigger1'), '2018-02-01').trigger_url]"
 }
@@ -88,7 +88,7 @@ In this exercise you will add the custom provider resources to the `mainTemplate
 
 ```json
 {
-    "name": "users",
+    "name": "autos",
     "routingType": "Proxy,Cache",
     "endpoint": "[listSecrets(resourceId('Microsoft.Web/sites/functions', parameters('funcname'), 'HttpTrigger1'), '2018-02-01').trigger_url]"
 }
@@ -133,8 +133,8 @@ The **overview** view should now look like this.
 
 ## Add the custom resources UI
 
-1. Find the `"resourceType": "users"` value.
-2. Paste the following `createUIDefinition` section below `"resourceType": "users"`.
+1. Find the `"resourceType": "autos"` value.
+2. Paste the following `createUIDefinition` section below `"resourceType": "autos"`.
 
 ```json
 "createUIDefinition": {
@@ -142,24 +142,24 @@ The **overview** view should now look like this.
         "steps": [
             {
                 "name": "add",
-                "label": "Add user",
+                "label": "Add Automobile",
                 "elements": [
                     {
-                        "name": "name",
-                        "label": "User's Full Name",
+                        "name": "make",
+                        "label": "Make",
                         "type": "Microsoft.Common.TextBox",
                         "defaultValue": "",
-                        "toolTip": "Provide a full user name.",
+                        "toolTip": "Provide a make for this auto.",
                         "constraints": {
                             "required": true
                         }
                     },
                     {
-                        "name": "location",
-                        "label": "User's Location",
+                        "name": "model",
+                        "label": "Model",
                         "type": "Microsoft.Common.TextBox",
                         "defaultValue": "",
-                        "toolTip": "Provide a Location.",
+                        "toolTip": "Provide a model name for this auto.",
                         "constraints": {
                             "required": true
                         }
@@ -170,8 +170,8 @@ The **overview** view should now look like this.
         "outputs": {
             "name": "[steps('add').name]",
             "properties": {
-                "FullName": "[steps('add').name]",
-                "Location": "[steps('add').location]"
+                "Make": "[steps('add').make]",
+                "Model": "[steps('add').model]"
             }
         }
     }
@@ -187,7 +187,7 @@ Note the above is a fully formed createUIDefinition as you might find in a dedic
 "commands": [
     {
         "displayName": "Custom Context Action",
-        "path": "users/contextAction",
+        "path": "autos/contextAction",
         "icon": "Start"
     }
 ]
@@ -199,12 +199,12 @@ Note the above is a fully formed createUIDefinition as you might find in a dedic
 ```json
 "columns": [
     {
-        "key": "properties.FullName",
-        "displayName": "Full Name"
+        "key": "properties.Make",
+        "displayName": "Make"
     },
     {
-        "key": "properties.Location",
-        "displayName": "Location",
+        "key": "properties.Model",
+        "displayName": "Model",
         "optional": true
     }
 ]
@@ -261,31 +261,31 @@ This button was defined in the Overview section of `viewDefinition.json` as a co
 
 ![Successful ping](./images/03.png)
 
-## Managing users
+## Managing autos
 
-1. In the left hand menu of the managed application, find the enu item labeled "Users" under the "Resources" section.
-2. Click the "Users" button. You are directed to a screen showing a list of user names. The list is currently empty.
+1. In the left hand menu of the managed application, find the enu item labeled "Autos" under the "Resources" section.
+2. Click the "Autos" button. You are directed to a screen showing a list of automobile names. The list is currently empty.
 
 > This screen layout was defined by the `columns` section of `viewDefinition.json`.
 
-### Add new users
+### Add new autos
 
-When creating a new user, you are actually creating a new Azure resource.
+When creating a new auto, you are actually creating a new Azure resource.
 
 1. Click Add
 
 > This screen was defined by the `createUIDefinition`  section of `viewDefinition.json`.
 
-2. Enter a new user's full name and location.
+2. Enter a new auto's make (manufacturer) and model.
 3. Review the new resource to ensure it passes validation. and submit the new resource.
 
-> You can now see the new Azure resource in the list of users.
+> You can now see the new Azure resource in the list of autos.
 
-4. Add another user.
+4. Add another auto.
 
-### Inspecting the user resource id
+### Inspecting the auto resource id
 
-1. Click on one of the users in the list.
+1. Click on one of the autos in the list.
 
 > This resource overview shows the containing resource group and subscription like any other resource in Azure.
 
@@ -294,7 +294,7 @@ When creating a new user, you are actually creating a new Azure resource.
 
 > This resource ID demostrates this resource is addressable via Azure APIs like any other resource in Azure.
 
-### Inspecting user storage
+### Inspecting auto storage
 
 Now that we've seen this is an Azure resource, let's look at where it is stored.
 
@@ -309,14 +309,14 @@ Now that we've seen this is an Azure resource, let's look at where it is stored.
 6. Inspect the custom resources that were created by the resource provider.
 7. Scrolling to the right shows the DATA column, which contains the JSON representation of each resource you created.
 
-### Deleting a user
+### Deleting an auto
 
 1. Navigate back to the managed application you created.
-2. Click the "Users" menu item on the left.
-3. Click on a user resource.
+2. Click the "Autos" menu item on the left.
+3. Click on a auto resource.
 4. On the resource's Overview page, click the Delete button and confirm deletion.
 
-You now only see one user resource.
+You now only see one auto resource.
 
 You may go back to the storage table to see the record for that rescource no longer exists.
 

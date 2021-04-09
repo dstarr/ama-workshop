@@ -32,7 +32,7 @@
                                         "label": "Make",
                                         "type": "Microsoft.Common.TextBox",
                                         "defaultValue": "",
-                                        "toolTip": "Provide a full user name.",
+                                        "toolTip": "Provide a make for the auto.",
                                         "constraints": {
                                             "required": true
                                         }
@@ -42,7 +42,7 @@
                                         "label": "Model",
                                         "type": "Microsoft.Common.TextBox",
                                         "defaultValue": "",
-                                        "toolTip": "Provide a Location.",
+                                        "toolTip": "Provide a model name.",
                                         "constraints": {
                                             "required": true
                                         }

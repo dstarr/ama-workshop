@@ -10,9 +10,9 @@
         {
             "kind": "CustomResources",
             "properties": {
-                "displayName": "Users",
+                "displayName": "Autos",
                 "version": "1.0.0.0",
-                "resourceType": "users"
+                "resourceType": "autos"
             }
         }
     ]
