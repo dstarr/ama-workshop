@@ -177,6 +177,8 @@ In this exercise, you will change the type of VM from Windows 10 to Ubuntu and, 
 
 Here you will update the `createUiDefinition.json` file to create an installation experience that prompts the user for details needed to create an Azure Storage account. The values gathered will be input into the ARM template as parameters at install time.
 
+> __Note:__ At any point in editing the `createUiDefinition.json` file, consider using the [Create UI Definition](https://portal.azure.com/?feature.customPortal=false#blade/Microsoft_Azure_CreateUIDef/SandboxBlade) sandbox in the Azure portal to check your sytax and functionality.
+
 1.	Open the UI Definition file (createUiDefinition.json) for editing.
 2.	Add the following JSON as the last member of the steps array.
 
