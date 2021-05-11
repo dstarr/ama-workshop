@@ -11,7 +11,7 @@ In this exercise you will customize `createUiDefinition.json` with some dynamic 
 
 ## Getting started
 
-1. In VS Code, open the file `lab-4 > begin > createUiDefinition.json`
+1. In VS Code, open the file `lab-3 > begin > createUiDefinition.json`
 2. Open the [Create UI Definition Sandbox](https://portal.azure.com/?feature.customPortal=false#blade/Microsoft_Azure_CreateUIDef/SandboxBlade)
 3. Paste the contents of the file in VS Code into the sandbox window.
 4. Click the Preview button on the sandbox. You will see a very uncustomized experience.
