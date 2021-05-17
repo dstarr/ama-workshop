@@ -7,11 +7,7 @@
             {}
         ],
         "steps": [
-            {
-                "name": "apiBladeStep",
-                "label": "API Calls",
-                "elements": []
-            }
+            
         ],
         "outputs": {
             "storageAccountNamePrefix": "[steps('storageConfig').storageAccounts.prefix]",
