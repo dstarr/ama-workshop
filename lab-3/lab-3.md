@@ -293,11 +293,12 @@ definition, just as you did in Lab 1.
 
 3. Select the Create button
 
-## Install the application 
+## Deploy the application 
 
 1.	From within your resource group, click the Service catalog managed application definition you just created.
 2.	Select **Deploy from definition**.
-3.	Go through the setup screens and create the managed application.
+3.	Go through the setup screens to see your installation API calls.
+4. Deploy the application. It is a known issue that the charts will not show up in your new application for about an hour.
 
 
 

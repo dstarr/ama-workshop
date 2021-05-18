@@ -110,7 +110,7 @@
         ],
         "outputs": {
             "storageAccountNamePrefix": "[steps('storagePrefixStep').storagePrefix]",
-            "storageAccountType": "[steps('storageConfig').storageType.value]",
+            "storageAccountType": "[steps('storagePrefixStep').storageType]",
             "location": "[location()]"
         }
     }
