@@ -3,7 +3,7 @@ Azure Managed Applications Workshop
 
 ## Lab Overview
 
-In this lab you will further customize the functionality of `createUiDefinitio.json` and then customize the actual Managed Applicaiton instance working with `viewDefinition.json`. Finally, you will deploy this new functionality using the same publication technique you used in Lab 1.
+In this lab you will further customize the functionality of `createUiDefinition.json` and then customize the actual Managed Application instance working with `viewDefinition.json`. Finally, you will deploy this new functionality using the same publication technique you used in Lab 1.
 
 # Exercise 1: Customize the installer
 
@@ -18,7 +18,7 @@ In this exercise you will customize `createUiDefinition.json` with some dynamic 
 
 ## Adding a textbox
 
-In this section you will add a new step to the `configureUiDefinition.json` file and validate the input for a textbox.
+In this section you will add a new step to the `createUiDefinition.json` file and validate the input for a textbox.
 
 1. In the code file in VS Code, add the following step
 
@@ -104,7 +104,7 @@ In this section you will add a new step to the `configureUiDefinition.json` file
 
 ## Adding an API call
 
-In this section you will add a new step to the `configureUiDefinition.json` file and make calls to the Azure API, binding the return body to a dropdown list.
+In this section you will add a new step to the `createUiDefinition.json` file and make calls to the Azure API, binding the return body to a dropdown list.
 
 1. In the code file in VS Code, add the following step
 
@@ -262,19 +262,22 @@ definition, just as you did in Lab 1.
 1.	In your resource group, add a **Service Catalog Managed Application Definition**.
 
 2.	On the creation form, use the following values.
-    - Name: ma-03
-    - Display name: ma-03
-    - Package file uri: The URI of the blob you just uploaded
-    - Deployment Mode: Complete
-    - Lock level: None
+    
+    | Setting | Value |
+    | --- | --- | 
+    | Name | ma-03 |
+    | Display name | ma-03 |
+    | Package file uri | The URI of the blob you just uploaded |
+    | Deployment Mode | Complete |
+    | Lock level | None |
 
-3. Select the Create button
+3. Click the Create button
 
 ## Deploy the application 
 
-1.	From within your resource group, click the Service catalog managed application definition you just created.
-2.	Select **Deploy from definition**.
-3.	Go through the setup screens to see your installation API calls.
+1. From within your resource group, click the Service catalog managed application definition you just created.
+2. Select **Deploy from definition**.
+3. Go through the setup screens to see your installation API calls.
 4. Deploy the application. 
 
 **It is a known issue that the charts will not show up in your new application for about an hour.**
