@@ -57,33 +57,9 @@ In this section you will add a new step to the `configureUiDefinition.json` file
 
 5. Try typing some letters into the Storage Account Prefix textbox. Note you can type as few or as many letters as you like.
 
-We want to constrain the allowed values in the textbox using regular expressions such that only 4 characters may be entered.
+    We want to constrain the allowed values in the textbox using regular expressions such that only 4 characters may be entered.
 
-6. Add the following JSON to the `constraints` section.{
-                        "name": "storageType",
-                        "type": "Microsoft.Common.DropDown",
-                        "label": "Storage Type",
-                        "toolTip": "Select the storage type to use",
-                        "defaultValue": "Standard Locally Redundant",
-                        "constraints": {
-                            "allowedValues": [
-                                {
-                                    "label": "Standard Locally Redundant",
-                                    "value": "Standard_LRS"
-                                },
-                                {
-                                    "label": "Premium Locally Redundant",
-                                    "value": "Premium_LRS"
-                                },
-                                {
-                                    "label": "Standard Globally Redundant",
-                                    "value": "Standard_GRS"
-                                }
-                            ],
-                            "required": true
-                        },
-                        "visible": true
-                    }
+6. Add the following JSON to the `constraints` section.
 
 ```json
 "validations": [
@@ -223,9 +199,10 @@ In this exercise you will customize the `viewDefinition.json` file in the same d
 {
     "kind": "Metrics",
     "properties": {
-    "displayName": "Sample Metrics",
-    "version": "1.0.0",
-    "charts": []
+        "displayName": "Sample Metrics",
+        "version": "1.0.0",
+        "charts": []
+    }
 }
 ```
 
