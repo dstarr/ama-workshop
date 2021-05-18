@@ -211,8 +211,8 @@ In this exercise you will customize the `viewDefinition.json` file in the same d
 {
     "kind": "Overview",
     "properties": {
-    "header": "Welcome to Azure Managed Applications",
-    "description": "This managed application is for **exercise purposes**."
+        "header": "Welcome to Azure Managed Applications",
+        "description": "This managed application is for **exercise purposes**."
     }
 }
 ```
