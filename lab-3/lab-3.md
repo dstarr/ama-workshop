@@ -24,7 +24,7 @@ In this section you will add a new step to the `configureUiDefinition.json` file
 
 ```json
 {
-    "name": "textBox",
+    "name": "storagePrefixStep",
     "label": "Storage Account Prefix",
     "bladeTitle": "Storage Account Prefix",
     "subLabel": {
@@ -41,7 +41,7 @@ In this section you will add a new step to the `configureUiDefinition.json` file
 
 ```json
 {
-    "name": "nameInstance",
+    "name": "storagePrefix",
     "type": "Microsoft.Common.TextBox",
     "label": "Storage Account Prefix",
     "toolTip": "Use only allowed characters",
@@ -59,7 +59,31 @@ In this section you will add a new step to the `configureUiDefinition.json` file
 
 We want to constrain the allowed values in the textbox using regular expressions such that only 4 characters may be entered.
 
-6. Add the following JSON to the `constraints` section.
+6. Add the following JSON to the `constraints` section.{
+                        "name": "storageType",
+                        "type": "Microsoft.Common.DropDown",
+                        "label": "Storage Type",
+                        "toolTip": "Select the storage type to use",
+                        "defaultValue": "Standard Locally Redundant",
+                        "constraints": {
+                            "allowedValues": [
+                                {
+                                    "label": "Standard Locally Redundant",
+                                    "value": "Standard_LRS"
+                                },
+                                {
+                                    "label": "Premium Locally Redundant",
+                                    "value": "Premium_LRS"
+                                },
+                                {
+                                    "label": "Standard Globally Redundant",
+                                    "value": "Standard_GRS"
+                                }
+                            ],
+                            "required": true
+                        },
+                        "visible": true
+                    }
 
 ```json
 "validations": [
@@ -71,6 +95,36 @@ We want to constrain the allowed values in the textbox using regular expressions
 ```
 
 7. Preview your work in the sandbox. Now you must match the regular expression for your prefix or you receive an error message.
+
+8. Finally we need to allow customers to select the type of storage they want, so add the following element to the step.
+
+```json
+{
+    "name": "storageType",
+    "type": "Microsoft.Common.DropDown",
+    "label": "Storage Type",
+    "toolTip": "Select the storage type to use",
+    "defaultValue": "Standard Locally Redundant",
+    "constraints": {
+        "allowedValues": [
+            {
+                "label": "Standard Locally Redundant",
+                "value": "Standard_LRS"
+            },
+            {
+                "label": "Premium Locally Redundant",
+                "value": "Premium_LRS"
+            },
+            {
+                "label": "Standard Globally Redundant",
+                "value": "Standard_GRS"
+            }
+        ],
+        "required": true
+    },
+    "visible": true
+}
+```
 
 ## Adding an API call
 
@@ -94,7 +148,7 @@ In this section you will add a new step to the `configureUiDefinition.json` file
 {
     "name": "apiResourceGroups",
     "type": "Microsoft.Solutions.ArmApiControl",
-    "toolTip": "This is an API that you will never see.",
+    "toolTip": "This is an API control.",
     "request": {
         "method": "GET",
         "path": "[concat(subscription().id, '/resourcegroups?api-version=2020-06-01')]"
@@ -119,9 +173,9 @@ In this section you will add a new step to the `configureUiDefinition.json` file
 }
 ```
 
-2. Paste the new file contents into the sandbox and preview your work. Note that selecting the dropbox retrieves all resource groups present in your subscription.
+3. Paste the new file contents into the sandbox and preview your work. Note that selecting the dropbox retrieves all resource groups present in your subscription.
 
-3. Let's add one more API call just to see it working. Add the following elements into the **API Calls** step. This will create one ore dropdown bound to all storage accounts in your subscription.
+4. Let's add one more API call just to see it working. Add the following elements into the **API Calls** step. This will create one ore dropdown bound to all storage accounts in your subscription.
 
 ```json
 {
