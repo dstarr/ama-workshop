@@ -133,10 +133,41 @@ The **overview** view should now look like this.
 }
 ```
 
-## Add the custom resources UI
+## Add commands
 
 1. Find the `"resourceType": "autos"` value.
-2. Paste the following `createUIDefinition` section below `"resourceType": "autos"`.
+2. Below that, add the following JSON to define the command that will be executed.
+
+```json
+"commands": [
+    {
+        "displayName": "Custom Context Action",
+        "path": "autos/contextAction",
+        "icon": "Start"
+    }
+]
+```
+## Add columns for layout
+
+Under the new `commands` array, add the following JSON to define the layout for showing any custom resources.
+
+```json
+"columns": [
+    {
+        "key": "properties.Make",
+        "displayName": "Make"
+    },
+    {
+        "key": "properties.Model",
+        "displayName": "Model",
+        "optional": true
+    }
+]
+```
+
+## Add the custom resources UI
+
+Under the new `columns` array, add the following `createUIDefinition` section.
 
 ```json
 "createUIDefinition": {
@@ -181,36 +212,7 @@ The **overview** view should now look like this.
 ```
 Note the above is a fully formed createUIDefinition as you might find in a dedicated file of the same name.
 
-## Add commands
 
-1. After the `createUIDefinition` property, add the following JSON to define the command that will be executed.
-
-```json
-"commands": [
-    {
-        "displayName": "Custom Context Action",
-        "path": "autos/contextAction",
-        "icon": "Start"
-    }
-]
-```
-## Add columns for layout
-
-1. Under the commands array, add the following JSON to define the layout for showing any custom resources.
-
-```json
-"columns": [
-    {
-        "key": "properties.Make",
-        "displayName": "Make"
-    },
-    {
-        "key": "properties.Model",
-        "displayName": "Model",
-        "optional": true
-    }
-]
-```
 You now have a fully formed `viewDefinition.json`.    
 
 The work you have just done looks like the following JSON (details ommitted for clarity).
