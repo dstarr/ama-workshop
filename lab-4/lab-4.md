@@ -17,6 +17,8 @@ In this exercise you will deploy a packaged Azure function to a storage account,
 
 ## Upoad the function application
 
+Use the Azure portal for the following steps.
+
 1. In the blob storage of your new storage account, create a container named "function".
 2. Upload the `lab-5/begin/functionpackage.zip` file to the new container.
 3. Click on the ZIP file and then copy the URL for that blob.
