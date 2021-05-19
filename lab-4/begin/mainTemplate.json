@@ -128,19 +128,6 @@
             "sku": {
                 "name": "Standard_LRS"
             }
-        },
-        {
-            "apiVersion": "[variables('customrpApiversion')]",
-            "type": "Microsoft.CustomProviders/resourceProviders",
-            "name": "[variables('customProviderName')]",
-            "location": "[parameters('location')]",
-            "properties": {
-                "actions": [],
-                "resourceTypes": []
-            },
-            "dependsOn": [
-                "[concat('Microsoft.Web/sites/',parameters('funcname'))]"
-            ]
         }
     ],
     "outputs": {}
