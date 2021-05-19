@@ -211,6 +211,18 @@ Note the above is a fully formed createUIDefinition as you might find in a dedic
 ```
 You now have a fully formed `viewDefinition.json`.    
 
+The work you have just done looks like the following JSON (details ommitted for clarity).
+
+```json
+"properties": {
+    "displayName": "Autos",
+    "version": "1.0.0.0",
+    "resourceType": "autos",
+    "createUIDefinition": {...},
+    "commands": [...],
+    "columns": [...]
+}
+```
 
 # Exercise 4: Deploy the managed application package
 
