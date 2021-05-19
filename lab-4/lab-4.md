@@ -20,6 +20,9 @@ In this exercise you will deploy a packaged Azure function to a storage account,
 Use the Azure portal for the following steps.
 
 1. In the blob storage of your new storage account, create a container named "function".
+
+    **Note:** The _Public access level_ for the new container should be set to "Blob". This allows the blob to be read anonomously if you have the URL.
+
 2. Upload the `lab-5/begin/functionpackage.zip` file to the new container.
 3. Click on the ZIP file and then copy the URL for that blob.
 4. Paste the URL to a location for use later.
@@ -243,6 +246,9 @@ ZIP the following files into a ZIP file with the files at the root.
 ## Upload the package to the storage account
 
 1. In the storage account you created earlier, create a new container named "arm".
+
+    **Note:** The _Public access level_ for the new container should be set to "Blob". This allows the blob to be read anonomously if you have the URL.
+
 2. Upload your ZIP file into this container.
 3. Copy the URL for this blob and paste it somewhere so you have easy access to it later.
 
