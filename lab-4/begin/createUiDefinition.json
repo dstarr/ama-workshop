@@ -41,7 +41,10 @@
                         "type": "Microsoft.Common.TextBox",
                         "label": "The Uri to the uploaded function zip file",
                         "toolTip": "The Uri to the uploaded function zip file",
-                        "visible": true
+                        "visible": true,
+                        "constraints": {
+                            "required": true
+                        }
                     }
                 ]
             }
