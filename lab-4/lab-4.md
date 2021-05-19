@@ -25,27 +25,11 @@ Use the Azure portal for the following steps.
 
 2. Upload the `lab-5/begin/functionpackage.zip` file to the new container.
 3. Click on the ZIP file and then copy the URL for that blob.
-4. Paste the URL to a location for use later.
+4. Paste the URL to a location for use later. You will need this URL when deploying the final application.
 
 # Exercise 2: Set up the ARM template
 
 In this exercise you will add the custom provider resources to the `mainTemplate.json` ARM template for a managed application. 
-
-## Add the function package URL
-
-1. Open the `lab-5/begin/mainTemplate.json` file for editing.
-2. Find the following JSON.
-
-```json
-"zipFileBlobUri": {
-    "type": "string",
-    "defaultValue": "CHANGE_THIS",
-    "metadata": {
-        "description": "The Uri to the uploaded function zip file"
-    }
-}
-```
-3. Replace `CHANGE_THIS` with the URL of the function app package you copied in the previous step.
 
 ## Add the custom provider resource
 
@@ -268,6 +252,8 @@ In this exercise you will create a new Managed Application Definition and use it
 
 After creating the AMA Definition, deploy it as a managed application.
 
+**Note:** You will need the URL of the function's ZIP file that you noted at the beginning of this lab.
+
 # Exercise 6: Using custom resources
 
 In this exercise you will use the custom provider functionality you added to the managed appliciation.
@@ -285,7 +271,7 @@ This button was defined in the Overview section of `viewDefinition.json` as a co
 
 ## Managing autos
 
-1. In the left hand menu of the managed application, find the enu item labeled "Autos" under the "Resources" section.
+1. In the left hand menu of the managed application, find the menu item labeled "Autos" under the "Resources" section.
 2. Click the "Autos" button. You are directed to a screen showing a list of automobile names. The list is currently empty.
 
 > This screen layout was defined by the `columns` section of `viewDefinition.json`.

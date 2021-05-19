@@ -30,7 +30,6 @@
         },
         "zipFileBlobUri": {
             "type": "string",
-            "defaultValue": "CHANGE_THIS",
             "metadata": {
                 "description": "The Uri to the uploaded function zip file"
             }

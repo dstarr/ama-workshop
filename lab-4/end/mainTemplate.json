@@ -25,7 +25,6 @@
         },
         "zipFileBlobUri": {
             "type": "string",
-            "defaultValue": "https://amawslab4.blob.core.windows.net/lab-4/functionpackage.zip",
             "metadata": {
                 "description": "The Uri to the uploaded function zip file"
             }
