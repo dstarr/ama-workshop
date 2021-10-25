@@ -59,12 +59,8 @@ Clone the repository to your local machine.
     ![Storage account](./images/01.png)
 
 4. While going through the setup steps, use the following values.
-    - Storage account name > Some unique value
-    - Basics > Replication > Locally Redundant Storage (LRS)
-    - Networking > Network Connectivity > Public endpoint (all networks)
-    - Data Protection > Leave defaults
-    - Advanced > Leave defaults
-    - Tags > Leave defaults
+    - Basics > Storage account name > Some unique value
+    - Basics > Redundancy > Locally Redundant Storage (LRS)
 
 5. Create a new container in blob storage.
 
@@ -79,7 +75,7 @@ Clone the repository to your local machine.
  
 ## Upload app.zip
 
-1. Click into the new container.
+1. Click into the newly created container.
 2. Select “Upload.”
 3. Browse to app.zip and upload the file.
 4. Right click the new blob and select > Properties.
