@@ -1,6 +1,8 @@
 # Mastering Azure Managed Applications Workshop - Labs
 
-## Part of the [Mastering the Marketplace](https://aka.ms/masteringthemarketplace) learning library
+## Part of the Mastering the Marketplace learning library
+
+The [Mastering the Marketplace](https://aka.ms/masteringthemarketplace) learning library contains videos, hands-n labs, and sample code to help Microsoft marketplace solution publishers get their solutions on-boarded to the marketplace. The content is primarily technical and targets technologists.
 
 ## Prerequisites for these hands-on labs
 
