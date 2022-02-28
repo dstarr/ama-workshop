@@ -138,7 +138,7 @@ In this excercise, you will indicate that your solution will not be re-sold by C
 
 You have completed the **Resell through CSPs** screen. Proceed to the next exercise.
 
-## Exercise 6 - Plan overview
+## Exercise 6 - Adding plans
 
 Every offer must include at least one plan. In this exercise, you will add two plans to your offer.
 
@@ -206,7 +206,7 @@ In this section, you specifiy details about your plan needed to create the appli
 
 1. Under **Package details**, enter "0.0.1" for version.
 1. For **Package file (.zip)** you will upload a ZIP file containing the deployment package needed. You may drag an drop or click to brose to the ZIP file.
-    1. There is a file in the `lab-1-partner-center\assets` assets folder named **silverplan.zip**. Upload it.
+    1. There is a file in the `lab-1-partner-center\assets` assets folder named `silver-plan-deployment-package.zip`. Upload it.
 1. Navigate to the **Public Azure** section near the bottom of the screen.
     1. For the **Azure Active Directory tenant ID** section, enter your Tenant ID from the Azure portal. If you aren't sure how to find your Tenant ID, [click here](#finding-your-tenant-id) and then come back to this section when you are done.
     2. For the **Authorizations** section, under **Principal ID**, enter the ID of your own account from the Azure portal. If you aren't sure how to find your account ID, [click here](#finding-your-account-id) and come back to this section when you are done.
@@ -221,7 +221,8 @@ In this section, you specifiy details about your plan needed to create the appli
 
 Here you wlil create one more plan.
 
-1. Create another plan, this time a gold plan. Use the logical values according to what you put in for the Silver offer.
+1. Create another plan, this time a **Gold** plan. Use the logical values according to what you put in for the Silver offer.
+    >Don't forget to include the metered billing dimensions in the **Pricing and availability**.
 1. When you are done, **Review publish changes**.
 
 ## Publish your offer
@@ -235,8 +236,19 @@ When you are done entering your two plans, it's time to publish your offer.
 
 ### Finding your Tenant ID
 
+1. Open the **Azure portal**.
+1. In the search box at the top of the page, type **Tenant**.
+1. Select **Tenant properties** from the drop down menu.
+1. Find the **Tenant ID** field and copy it to your clipboard.
+
+### Finding your user account ID
+
+1. Open the **Azure portal**.
+1. In the search box at the top of the page, type **Users**.
+1. Select **Users** from the dropdown menu.
+1. Find a click on the user account.
+1. Find the **Object ID** and copy it to your clipboard.
 
 
-### Finding your account ID
 
 
