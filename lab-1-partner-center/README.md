@@ -6,7 +6,7 @@ In this lab you will configure and publish an Azure Application offer in the Azu
 
 ## Exercise 1 - Create the offer
 
-In this exercise you will create an Anure application offer.
+In this exercise you will create an Azure application offer.
 
 1. Log in to [Partner Center](https://partner.microsoft.com/en-us/dashboard/home).
 1. Go to the **Marketplace offers** page.
@@ -26,10 +26,10 @@ In this exercise you will set up a leads management section and connect it to a 
 
 In this section you will fill our the **Offer setup** portion of your offer. You will connect your offer to a CRM so you collect leads of people using your solution, or interested in it.
 
-1. Navigate to the **Offer setup** page via the left hand navigateion
+1. Navigate to the **Offer setup** page via the left hand navigation.
 1. Scroll down to the **Customer leads** section.
 1. Click the **Connect** link.
-1. Click the **Lead destination dropdown** and note you may integrate your lead collection with several types of CRMs. In this exercise you wlil connect to an **Azure table**, so select that option from the dropdown.
+1. Click the **Lead destination dropdown** and note you may integrate your lead collection with several types of CRMs. In this exercise you will connect to an **Azure table**, so select that option from the dropdown.
 1. Put in your email address.
 
 You must create the Azure table storage account in the Azure portal to connect to for lead management.
@@ -45,11 +45,11 @@ In this section you will create an Azure **Data Storage account** using the Azur
 1. On the **Storage account** page, click the **Create** button. You should now be on the **Create a storage account** page.
 1. Under the **Project details** section, select **Create new** for your resource group.
 1. Create a new Resource group named **ama-workshop-leads**.
-1. For storage account name, type in a string that will be unique accross azure. Try something like **amaworshopleads002**, where **002** is a random number between 001 and 999.
+1. For storage account name, type in a string that will be unique across azure. Try something like **amaworshopleads002**, where **002** is a random number between 001 and 999.
 1. For the **Region** select a region near you.
-1. Under **Redundancy**, select **Locally-redundant storage (LRS)**. This is the leaast expensive storage account type.
-1. Select the **Review and create** at the bottom of the page.You are taken to teh final review page and a message should appear at the top of the page, **Validation passed**.
-1. Slect the **Create** button.
+2. Under **Redundancy**, select **Locally-redundant storage (LRS)**. This is the least expensive storage account type.
+3. Select the **Review and create** at the bottom of the page.You are taken to teh final review page and a message should appear at the top of the page, **Validation passed**.
+4. Slect the **Create** button.
 
 
 ### CRM leads - Part 2
@@ -81,11 +81,11 @@ You must select a category for your Managed App. You want your app to show up in
 1. Under the **Primary category** dropdown, select **Developer tools**.
 1. Under the **Subcategory** dropdown, select **Developer Service**.
 
-You have selected a category for your application. Note you could select one more, but that's not nedded for this lab.
+You have selected a category for your application. Note you could select one more, but that's not needed for this lab.
 
 ### Legal
 
-1. In the **Legal** section selec the checkbox next to "Use the Standard Contract for Microsoft’s commercial marketplace?"
+1. In the **Legal** section selec the checkbox next to "Use the Standard Contract for Microsoft’s commercial marketplace?".
 1. A dialog box appears. Click the **Accept** button.
 1. Click the **Save draft** button at the bottom of the page.
 
@@ -99,14 +99,14 @@ In this exercise, you fill fill out the **Offer listing** page.
 1. In the **Search results summary** textbox, enter "**AMA Workshop 1 search results summary**".
 1. In the Short description text area, enter "**AMA Workshop 1 short description**".
 1. In the **Description** text area, enter "**AMA Workshop 1 description**".
-1. In the **Search keywonrds** section, you may enter up to 3 keywords.
-1. For the **Privacy policy link** textbox, you may use Microsoft's privacy policy for this workshop. Enter "https://privacy.microsoft.com/en-us/privacystatement".
-1. Scroll down to the **Support contact** section and enter the required information. For the field **Support website for Azure Global customers**, enter the link "https://partner.microsoft.com/en-US/support/v2/".
-1. Scroll down to the **Engineering contact information** section.
-1. Enter the required information.
-1. Scroll down to the **Marketplace media > Logos** section.
+2. In the **Search keywords** section, you may enter up to 3 keywords.
+3. For the **Privacy policy link** textbox, you may use Microsoft's privacy policy for this workshop. Enter "https://privacy.microsoft.com/en-us/privacystatement".
+4. Scroll down to the **Support contact** section and enter the required information. For the field **Support website for Azure Global customers**, enter the link "https://partner.microsoft.com/en-US/support/v2/".
+5. Scroll down to the **Engineering contact information** section.
+6. Enter the required information.
+7. Scroll down to the **Marketplace media > Logos** section.
 
-Here you will need to upload two logos that must be of the exaact right size. Examples are provided for you in the [./lab-1-partner-center/assets](./lab-1--partner-center/assets) folder. You can click to naviagate to the images or you can drag and drop them.
+Here you will need to upload two logos that must be of the exact right size. Examples are provided for you in the [./lab-1-partner-center/assets](./lab-1--partner-center/assets) folder. You can click to navigate to the images or you can drag and drop them.
 
 1. Upload the two images.
 1. For the screenshot, click the **Add image caption** link. Enter whatever you like for a caption.
@@ -117,10 +117,10 @@ You have completed the **Offer listing** screen. Proceed to the next exercise.
 
 ## Exercise 5 - Preview audience
 
-In this exercise, you will add your subscription id to the list of subscriptions that may access this offer before it is live. This is to provide access to your test team and anyoen else who would like to preview the offer before it goes live. In this case, you will enter the subscription ID you are using in theis workshop.
+In this exercise, you will add your subscription id to the list of subscriptions that may access this offer before it is live. This is to provide access to your test team and anyone else who would like to preview the offer before it goes live. In this case, you will enter the subscription ID you are using in this workshop.
 
 1. In the Azure portal, find your subscription ID. If you aren't sure how to do this take the following steps.
-    1. In the Azure portal, in the Searh box at the top of the screen, enter the word, "Subscriptions."
+    1. In the Azure portal, in the search box at the top of the screen, enter the word, "Subscriptions."
     1. Select the **Subscriptions** icon in the dropdown.
     1. On the **Subscriptions** page, click the link to the subscription you are using.
     1. On the **Subscription** page, copy the **Subscription ID** into your clipboard.
@@ -131,7 +131,7 @@ You have completed the **Preview audience** screen. Proceed to the next exercise
 
 ## Exercise 6 - Resell through CSPs
 
-In this excercise, you will indicate that your solution will not be re-sold by Cloud Solution Providers.
+In this exercise, you will indicate that your solution will not be re-sold by Cloud Solution Providers.
 
 1. From the list of radio buttons, select **No partners in the CSP program**.
 1. Click the **Save draft** button at the bottom of the page.
@@ -202,7 +202,7 @@ Click the **Save Draft** button at the bottom of the screen.
 
 ### Technical configuration
 
-In this section, you specifiy details about your plan needed to create the application at deployment time.
+In this section, you specify details about your plan needed to create the application at deployment time.
 
 1. Under **Package details**, enter "0.0.1" for version.
 1. For **Package file (.zip)** you will upload a ZIP file containing the deployment package needed. You may drag an drop or click to brose to the ZIP file.
@@ -219,7 +219,7 @@ In this section, you specifiy details about your plan needed to create the appli
 
 ## Create a second plan
 
-Here you wlil create one more plan.
+Here you will create one more plan.
 
 1. Create another plan, this time a **Gold** plan. Use the logical values according to what you put in for the Silver offer.
     >Don't forget to include the metered billing dimensions in the **Pricing and availability**.
