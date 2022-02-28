@@ -210,7 +210,8 @@ In this section, you specify details about your plan needed to create the applic
 1. Navigate to the **Public Azure** section near the bottom of the screen.
     1. For the **Azure Active Directory tenant ID** section, enter your Tenant ID from the Azure portal. If you aren't sure how to find your Tenant ID, [click here](#finding-your-tenant-id) and then come back to this section when you are done.
     2. For the **Authorizations** section, under **Principal ID**, enter the ID of your own account from the Azure portal. If you aren't sure how to find your account ID, [click here](#finding-your-account-id) and come back to this section when you are done.
-1. Click the **Save draft** button at the bottom of the screen.
+    3. For **Role definition**, select **Owner**.
+2. Click the **Save draft** button at the bottom of the screen.
 
 ## Check your offer
 
