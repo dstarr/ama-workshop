@@ -46,8 +46,8 @@ In this section you will create an Azure **Data Storage account** using the Azur
 1. For storage account name, type in a string that will be unique across azure. Try something like **amaworshopleads002**, where **002** is a random number between 001 and 999.
 1. For the **Region** select a region near you.
 2. Under **Redundancy**, select **Locally-redundant storage (LRS)**. This is the least expensive storage account type.
-3. Select the **Review and create** at the bottom of the page.You are taken to teh final review page and a message should appear at the top of the page, **Validation passed**.
-4. Slect the **Create** button.
+3. Select the **Review and create** at the bottom of the page.You are taken to the final review page and a message should appear at the top of the page, **Validation passed**.
+4. Select the **Create** button.
 
 
 ### CRM leads - Part 2
@@ -69,7 +69,7 @@ You have completed the **Offer setup** screen. Proceed to the next exercise.
 
 In this exercise you will fill out the **Properties** section of your offer. 
 
-1. Navigate the to **Properties** page via the left hand Nav.
+1. Navigate the to **Properties** page via the left hand Navigation.
 
 ### Categories
 
@@ -104,7 +104,7 @@ In this exercise, you fill fill out the **Offer listing** page.
 6. Enter the required information.
 7. Scroll down to the **Marketplace media > Logos** section.
 
-Here you will need to upload two logos that must be of the exact right size. Examples are provided for you in the [./lab-1-partner-center/assets](./lab-1--partner-center/assets) folder. You can click to navigate to the images or you can drag and drop them.
+Here you will need to upload two logos that must be of the exact right size. Examples are provided for you in the [./lab-1-partner-center/assets](./assets) folder. You can click to navigate to the images or you can drag and drop them.
 
 1. Upload the two images.
 1. For the screenshot, click the **Add image caption** link. Enter whatever you like for a caption.
@@ -143,9 +143,9 @@ Every offer must include at least one plan. In this exercise, you will add two p
 ### Creating a plan
 
 1. In the left-hand menu, select **Plan overview**.
-1. At the top of teh page, click **Create new plan.**
+1. At the top of the page, click **Create new plan.**
 1. Enter a **Plan ID** of "silver-plan".
-1. For **Plan name** enter "Silver.
+1. For **Plan name** enter "Silver".
 1. Click the **Create** button.
 
 ### Plan setup
@@ -207,7 +207,7 @@ In this section, you specify details about your plan needed to create the applic
     1. There is a file in the `lab-1-partner-center\assets` assets folder named `silver-plan-deployment-package.zip`. Upload it.
 1. Navigate to the **Public Azure** section near the bottom of the screen.
     1. For the **Azure Active Directory tenant ID** section, enter your Tenant ID from the Azure portal. If you aren't sure how to find your Tenant ID, [click here](#finding-your-tenant-id) and then come back to this section when you are done.
-    2. For the **Authorizations** section, under **Principal ID**, enter the ID of your own account from the Azure portal. If you aren't sure how to find your account ID, [click here](#finding-your-account-id) and come back to this section when you are done.
+    2. For the **Authorizations** section, under **Principal ID**, enter the ID of your own account from the Azure portal. If you aren't sure how to find your account ID, [click here](#finding-your-user-account-id) and come back to this section when you are done.
     3. For **Role definition**, select **Owner**.
 2. Click the **Save draft** button at the bottom of the screen.
 
@@ -229,7 +229,7 @@ Here you will create one more plan.
 When you are done entering your two plans, it's time to publish your offer.
 
 1. Go to the **Review publish changes** page.
-1. If all indicators are green, click the **Publish** button at the bottom of the page. You will be taken to the **Offer overview** page where you can monitor the status of your offer as it progresses to the **Publisher preview** stage. Do NOT go past the **Publisher preview** stage by clicking a **Go live** button.
+1. If all indicators are green, click the **Publish** button at the bottom of the page. You will be taken to the **Offer overview** page where you can monitor the status of your offer as it progresses to the **Publisher signoff** stage. Do NOT go past the **Publisher signoff** stage by clicking a **Go live** button.
 
 ## Appendix
 
@@ -245,7 +245,7 @@ When you are done entering your two plans, it's time to publish your offer.
 1. Open the **Azure portal**.
 1. In the search box at the top of the page, type **Users**.
 1. Select **Users** from the dropdown menu.
-1. Find a click on the user account.
+1. Search for your user account and click on it.
 1. Find the **Object ID** and copy it to your clipboard.
 
 
