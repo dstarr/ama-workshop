@@ -142,6 +142,101 @@ You have completed the **Resell through CSPs** screen. Proceed to the next exerc
 
 Every offer must include at least one plan. In this exercise, you will add two plans to your offer.
 
+### Creating a plan
 
+1. In the left-hand menu, select **Plan overview**.
+1. At the top of teh page, click **Create new plan.**
+1. Enter a **Plan ID** of "silver-plan".
+1. For **Plan name** enter "Silver.
+1. Click the **Create** button.
+
+### Plan setup
+
+1. On the **Plan setup** page, under the **Plan type** section, select the dropdown item, **Managed application**.
+1. Click the **Save Draft** button at the bottom of the screen.
+
+### Plan listing
+
+1. Click the **Plan listing** menu item on the left. 
+1. For **Plan summary**, enter "Silver plan summary".
+1. For the **Plan description**, enter "Silver plan description".
+1. Click the **Save Draft** button at the bottom of the screen.
+
+### Pricing and availability
+
+1. Click the **Pricing and availability** menu item on the left. 
+1. In the **Markets** section, click the **Edit markets** link. you must select at least one market in which your plan will be available for purchase. Most users will select "United States."
+1.   Select a market.
+1. Click the **Save** button.
+
+In the **Pricing** section you will enter prices of $0 because you don't want this workshop to cost you money when you buy your offer later.
+
+1. For **Price**, enter 0.
+
+In this section, we are going to have you do something that will be explained later in the day. It needs to be done upon plan creation, so you will do it now.
+
+1. Under the **Marketplace Metering Service dimensions** section, click **Add a Custom Meter Dimension**.
+    1. The **Enabled** checkbox is selected. 
+    1. For **ID**, enter "scan-1-page".
+    1. For **Display name**, enter "Scan a page".
+    1. For **Unit of measure**, enter "Scanned page".
+    1. For **Price Per** unit, enter 0.0
+    1. For **Monthly included in price**, enter 1000.
+1. Click **Add another Dimension**.
+    1. The **Enabled** checkbox is selected. 
+    1. For **ID**, enter "write-to-emr".
+    1. For **Display name**, enter "EMR Write".
+    1. For **Unit of measure**, enter "EMR Write".
+    1. For **Price Per** unit, enter 0.0
+    1. For **Monthly included in price**, enter 500.
+
+Your dimensions should look like this.
+
+| Enabled | ID | Display Name | Unit of Measure | Price per unit in USD | Monthly quantity included in base |
+| --- | --- | --- | --- | --- | --- |
+| Checked | scan-1-page | Scan a page | Scanned page | 0.0 | 1000 |
+| Checked | write-to-emr | EMR Write | EMR Write | 0.0 | 500 |
+
+
+Click the **Save Draft** button at the bottom of the screen.
+
+### Technical configuration
+
+In this section, you specifiy details about your plan needed to create the application at deployment time.
+
+1. Under **Package details**, enter "0.0.1" for version.
+1. For **Package file (.zip)** you will upload a ZIP file containing the deployment package needed. You may drag an drop or click to brose to the ZIP file.
+    1. There is a file in the `lab-1-partner-center\assets` assets folder named **silverplan.zip**. Upload it.
+1. Navigate to the **Public Azure** section near the bottom of the screen.
+    1. For the **Azure Active Directory tenant ID** section, enter your Tenant ID from the Azure portal. If you aren't sure how to find your Tenant ID, [click here](#finding-your-tenant-id) and then come back to this section when you are done.
+    2. For the **Authorizations** section, under **Principal ID**, enter the ID of your own account from the Azure portal. If you aren't sure how to find your account ID, [click here](#finding-your-account-id) and come back to this section when you are done.
+1. Click the **Save draft** button at the bottom of the screen.
+
+## Check your offer
+
+1. At the bottom of the screen, click the **Review and publish** button.
+2. All circles to the right should be green with a check box in them. If any are grey, fix that section and come back to **Review and publish changes**.
+
+## Create a second plan
+
+Here you wlil create one more plan.
+
+1. Create another plan, this time a gold plan. Use the logical values according to what you put in for the Silver offer.
+1. When you are done, **Review publish changes**.
+
+## Publish your offer
+
+When you are done entering your two plans, it's time to publish your offer.
+
+1. Go to the **Review publish changes** page.
+1. If all indicators are green, click the **Publish** button at the bottom of the page. You will be taken to the **Offer overview** page where you can monitor the status of your offer as it progresses to the **Publisher preview** stage. Do NOT go past the **Publisher preview** stage by clicking a **Go live** button.
+
+## Appendix
+
+### Finding your Tenant ID
+
+
+
+### Finding your account ID
 
 
