@@ -1,7 +1,5 @@
 # Lab 1 - Publishing an Azure Managed Application Offer in Partner Center
 
-## Mastering the Marketplace: Azure Managed Apps Workshop
-
 In this lab you will configure and publish an Azure Application offer in the Azure Marketplace. To do this, you must have an account in Partner Center, the portal for marketplace publishers. You must also have an Azure account where you can create resources.
 
 ## Exercise 1 - Create the offer

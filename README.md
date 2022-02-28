@@ -10,7 +10,7 @@
 
 ## Getting started
 
-CLone this repository to your local machine. You will need some artifacts from the labs folders to complete the labs.
+Clone this repository to your local machine. You will need some artifacts from the labs folders to complete the labs.
 
 ## Hands-on Labs
 
