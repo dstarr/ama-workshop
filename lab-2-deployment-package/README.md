@@ -8,7 +8,41 @@ This exercise just familiarizes you with the artifacts of the lab: the items tha
 
 ## Exercise 2 - ARM TTK
 
-This exercise introduces ARM TTK, a tool that runs in PowerShell and validates the artifacts in your deployment package. The ARM TTK tool runs tests that ensure valid `mainTemplate.json` and `createUiDefinition ` files.
+This exercise introduces **Azure Resource Manager Template Toolkit** (ARM TTK), a tool that runs in PowerShell and validates the artifacts in your deployment package. The ARM TTK tool runs tests that ensure valid `mainTemplate.json` and `createUiDefinition ` files.
+
+You will clone the ARM TTK repository and bring the code to your local machine where it can be executed using PowerShell. 
+
+If you are not on Windows you may download PowerShell for your platform.
+
+- [Linux](https://github.com/Azure/arm-ttk/blob/master/arm-ttk/README.md#running-tests-on-linux)
+- [macOS](https://github.com/Azure/arm-ttk/blob/master/arm-ttk/README.md#running-tests-on-macos)
+
+1. Clone the [ARM TTK repository](https://github.com/Azure/arm-ttk) from GitHub.
+2.
+3. Set up ARM TTK to run on your machine.
+> ```powershell
+> cd "<PATH TO ARM TTK REPO>\arm-ttk\arm-ttk"
+> 
+> Import-Module .\arm-ttk.psd1
+> ```
+
+4. Now, from the same directory, you may execute the ARM TTK tool like so.
+
+> ```powershell
+> $TemplateFileOrFolder = "<PATH TO AMA-WORKSHOP>\lab-2-deployment-package\assets\before"
+> 
+> Test-AzTemplate -TemplatePath $TemplateFileOrFolder
+> ```
+
+5. Run ARM TTK against the JSON files in the `` directory.
+6. See that test pass. The output from ARM TTK should look something like this.
+
+> 
+
+7. 
+
+
+
 
 ## Exercise 3 - mainTemplate.json
 
