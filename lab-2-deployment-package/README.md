@@ -20,7 +20,7 @@ This exercise will take you through creating the file that defines the user expe
 
 ## Exercise 5 - Publishing your deployment package
 
-In this exercise, you will create a second plan to go along with the offer you created in [Lab 1](../lab-1-partner-center/README.md) and publish your deployment package in that plan.
+In this exercise, you will create a second plan to go along with the offer you created in [Lab 1](../lab-1-partner-center/README.md). You'll use your new deployment package in that plan and then publish your completed offer.
 
 ## Conclusion
 
