@@ -216,14 +216,6 @@ In this section, you specify details about your plan needed to create the applic
 1. At the bottom of the screen, click the **Review and publish** button.
 2. All circles to the right should be green with a check box in them. If any are grey, fix that section and come back to **Review and publish changes**.
 
-## Create a second plan
-
-Here you will create one more plan.
-
-1. Create another plan, this time a **Gold** plan. Use the logical values according to what you put in for the Silver offer.
-    >Don't forget to include the metered billing dimensions in the **Pricing and availability**.
-1. When you are done, **Review publish changes**.
-
 ## Publish your offer
 
 When you are done entering your two plans, it's time to publish your offer.
