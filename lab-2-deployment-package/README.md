@@ -20,13 +20,14 @@ If you are not on Windows you may download PowerShell for your platform.
 1. Clone the [ARM TTK repository](https://github.com/Azure/arm-ttk) from GitHub.
 2.
 3. Set up ARM TTK to run on your machine.
+
 > ```powershell
 > cd "<PATH TO ARM TTK REPO>\arm-ttk\arm-ttk"
 > 
 > Import-Module .\arm-ttk.psd1
 > ```
 
-4. Now, from the same directory, you may execute the ARM TTK tool like so.
+4. Now, from the same directory you may execute the ARM TTK tool like so.
 
 > ```powershell
 > $TemplateFileOrFolder = "<PATH TO AMA-WORKSHOP>\lab-2-deployment-package\assets\before"
