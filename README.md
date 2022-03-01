@@ -18,7 +18,7 @@ Clone this repository to your local machine. You will need some artifacts from t
 
 Lab 1 - [Publishing an Azure Managed Application Offer in Partner Center](./lab-1-partner-center/README.md)
 
-Lab 2 - [The Managed Application Deployment Package](./lab-2/-deployment-package/README.md)
+Lab 2 - [The Managed Application Deployment Package](./lab-2-deployment-package/README.md)
 
 Lab 3 - [Purchasing an Azure Managed Application](./lab-3-purchasing-ama/README.md)
 
