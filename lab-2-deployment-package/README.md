@@ -20,7 +20,17 @@ This exercise will take you through creating the file that defines the user expe
 
 ## Exercise 5 - Publishing your deployment package
 
-In this exercise, you will create a second plan to go along with the offer you created in [Lab 1](../lab-1-partner-center/README.md). You'll use your new deployment package in that plan and then publish your completed offer.
+In this exercise, you will create a second plan to go along with the offer you created in [Lab 1](../lab-1-partner-center/README.md).
+
+## Exercise 6 - Publish your offer
+
+Now that you have two plans in your offer (created in Lab 1), it's time to publish your offer.
+
+1. Click the **Review and publish** button at the bottom of the page, which takes you to the **Review publish changes** page.
+2. Once all indicators are green, click the **Publish** button at the bottom of the page. You will be taken to the **Offer overview** page where you can monitor the status of your offer as it progresses to the **Publisher signoff** stage. This process can take some time to complete.
+
+> **DO NOT** go past the **Publisher signoff** stage by clicking a **Go live** button.
+
 
 ## Conclusion
 

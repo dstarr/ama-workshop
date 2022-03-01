@@ -218,12 +218,11 @@ In this section, you specify details about your plan needed to create the applic
 1. At the bottom of the screen, click the **Review and publish** button.
 2. All circles to the right should be green with a check box in them. If any are grey, fix that section and come back to **Review and publish changes**.
 
-## Publish your offer
+> **DO NOT** publish your offer yet.
 
-When you are done entering your two plans, it's time to publish your offer.
+## Conclusion
 
-1. Go to the **Review publish changes** page.
-1. If all indicators are green, click the **Publish** button at the bottom of the page. You will be taken to the **Offer overview** page where you can monitor the status of your offer as it progresses to the **Publisher signoff** stage. Do NOT go past the **Publisher signoff** stage by clicking a **Go live** button.
+Congratulations, you have completed Lab 1, the longest lab in the workshop. Other labs will build upon what you have done here in this lab. In this lab you did the following.
 
 ## Appendix
 
@@ -241,7 +240,3 @@ When you are done entering your two plans, it's time to publish your offer.
 1. Select **Users** from the dropdown menu.
 1. Search for your user account and click on it.
 1. Find the **Object ID** and copy it to your clipboard.
-
-
-
-
