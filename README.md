@@ -2,7 +2,7 @@
 
 ## Part of the Mastering the Marketplace learning library
 
-The [Mastering the Marketplace](https://aka.ms/masteringthemarketplace) learning library contains videos, hands-n labs, and sample code to help Microsoft marketplace solution publishers get their solutions on-boarded to the marketplace. The content is primarily technical and targets technologists.
+The [Mastering the Marketplace](https://aka.ms/masteringthemarketplace) learning library contains videos, hands-on labs, and sample code to help Microsoft marketplace solution publishers get their solutions on-boarded to the marketplace. The content is primarily technical and targets technologists building Azure Managed Applications for the Azure Marketplace.
 
 ## Prerequisites for these hands-on labs
 
