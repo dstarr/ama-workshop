@@ -20,6 +20,8 @@ You now have an offer to work with. Proceed to the next exercise.
 
 In this exercise you will set up a leads management section and connect it to a CRM.
 
+Navigate the to **Offer setup** page via the left hand navigation.
+
 ### CRM leads - Part 1
 
 In this section you will fill our the **Offer setup** portion of your offer. You will connect your offer to a CRM so you collect leads of people using your solution, or interested in it.
@@ -69,7 +71,7 @@ You have completed the **Offer setup** screen. Proceed to the next exercise.
 
 In this exercise you will fill out the **Properties** section of your offer. 
 
-1. Navigate the to **Properties** page via the left hand Navigation.
+1. Navigate the to **Properties** page via the left hand navigation.
 
 ### Categories
 
@@ -83,7 +85,7 @@ You have selected a category for your application. Note you could select one mor
 
 ### Legal
 
-1. In the **Legal** section selec the checkbox next to "Use the Standard Contract for Microsoft’s commercial marketplace?".
+1. In the **Legal** section select the checkbox next to "Use the Standard Contract for Microsoft’s commercial marketplace?".
 1. A dialog box appears. Click the **Accept** button.
 1. Click the **Save draft** button at the bottom of the page.
 
@@ -91,18 +93,18 @@ You have completed the **Properties** screen. Proceed to the next exercise.
 
 ## Exercise 4 - Offer listing
 
-In this exercise, you fill fill out the **Offer listing** page.
+In this exercise, you fill out the **Offer listing** page.
 
 1. In the left-hand menu, select **Offer listing**. You are taken to the **Offer listing** page.
-1. In the **Search results summary** textbox, enter "**AMA Workshop 1 search results summary**".
-1. In the Short description text area, enter "**AMA Workshop 1 short description**".
-1. In the **Description** text area, enter "**AMA Workshop 1 description**".
-2. In the **Search keywords** section, you may enter up to 3 keywords.
-3. For the **Privacy policy link** textbox, you may use Microsoft's privacy policy for this workshop. Enter "https://privacy.microsoft.com/en-us/privacystatement".
-4. Scroll down to the **Support contact** section and enter the required information. For the field **Support website for Azure Global customers**, enter the link "https://partner.microsoft.com/en-US/support/v2/".
-5. Scroll down to the **Engineering contact information** section.
-6. Enter the required information.
-7. Scroll down to the **Marketplace media > Logos** section.
+2. In the **Search results summary** textbox, enter "**AMA Workshop 1 search results summary**".
+3. In the Short description text area, enter "**AMA Workshop 1 short description**".
+4. In the **Description** text area, enter "**AMA Workshop 1 description**".
+5. In the **Search keywords** section, you may enter up to 3 keywords.
+6. For the **Privacy policy link** textbox, you may use Microsoft's privacy policy for this workshop. Enter "https://privacy.microsoft.com/en-us/privacystatement".
+7. Scroll down to the **Support contact** section and enter the required information. For the field **Support website for Azure Global customers**, enter the link "https://partner.microsoft.com/en-US/support/v2/".
+8. Scroll down to the **Engineering contact information** section.
+9. Enter the required information.
+10. Scroll down to the **Marketplace media > Logos** section.
 
 Here you will need to upload two logos that must be of the exact right size. Examples are provided for you in the [./lab-1-partner-center/assets](./assets) folder. You can click to navigate to the images or you can drag and drop them.
 
