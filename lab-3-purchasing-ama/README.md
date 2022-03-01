@@ -16,6 +16,8 @@ This exercise takes you through the process of buying your Gold plan, created in
 
 ### Purchasing the Gold plan
 
+### Examining the managed application
+
 ### Remote into the virtual machine
 
 ## Conclusion
