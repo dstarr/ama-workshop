@@ -60,7 +60,7 @@
   "resources": [
     {
       "type": "Microsoft.Storage/storageAccounts",
-      "apiVersion": "2019-06-01",
+      "apiVersion": "2021-08-01",
       "name": "[variables('storageAccountName')]",
       "location": "[parameters('location')]",
       "sku": {
@@ -84,7 +84,7 @@
     {
       "comments": "Default Network Security Group for template",
       "type": "Microsoft.Network/networkSecurityGroups",
-      "apiVersion": "2019-08-01",
+      "apiVersion": "2021-08-01",
       "name": "[variables('networkSecurityGroupName')]",
       "location": "[parameters('location')]",
       "properties": {
@@ -219,7 +219,7 @@
       ],
       "properties": {
         "roleDefinitionId": "[subscriptionResourceId('Microsoft.Authorization/roleDefinitions', 'acdd72a7-3385-48ef-bd42-f606fba81ae7')]",
-        "principalId": "[reference(variables('vmName'),'2019-07-01', 'Full').identity.principalId]",
+        "principalId": "[reference(variables('vmName'),'2021-11-01', 'Full').identity.principalId]",
         "delegatedManagedIdentityResourceId": "[resourceId('Microsoft.Compute/virtualMachines', variables('vmName'))]", 
         "scope": "[resourceGroup().id]",
         "principalType": "ServicePrincipal"
