@@ -129,9 +129,6 @@
                         "recommendedSizes": [
                           "Standard_D2s_v3"
                         ],
-                        "constraints": {
-                          "allowedSizes": []
-                        },
                         "options": {
                           "hideDiskTypeFilter": false
                         },
@@ -160,6 +157,7 @@
             "adminPassword": "[steps('vmBlade').username]",
             "adminUserName": "[steps('vmBlade').password]",
             "windowsOSVersion": "[steps('vmBlade').operatingSystem]",
+            "vmSize": "[steps('vmBlade').vmSize]",
             "itemPrefix": "[steps('prefixBlade').itemPrefix']",
             "location": "[location()]",
             "storageAccountName": "[steps('storageConfigBlade').storageAccount.prefix]",
