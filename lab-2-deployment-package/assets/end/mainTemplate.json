@@ -14,17 +14,18 @@
         "description": "Password for the Virtual Machine."
       }
     },
-    "dnsLabelPrefix": {
+    "itemPrefix": {
       "type": "string",
       "metadata": {
-        "description": "Unique DNS Name for the Public IP used to access the Virtual Machine."
+        "description": "Unique string used to prefix resource names created in the project."
       }
     },
     "windowsOSVersion": {
       "type": "string",
-      "defaultValue": "2019-Datacenter",
+      "defaultValue": "2022-Datacenter",
       "allowedValues": [
-        "2019-Datacenter"
+        "2019-Datacenter",
+        "2022-Datacenter"
       ],
       "metadata": {
         "description": "The Windows version for the VM. This will pick a fully patched image of this given Windows version."
@@ -32,7 +33,7 @@
     },
     "vmSize": {
       "type": "string",
-      "defaultValue": "Standard_D2_v3",
+      "defaultValue": "Standard_D2s_V3",
       "metadata": {
         "description": "Size of the virtual machine."
       }
@@ -46,16 +47,17 @@
     }
   },
   "variables": {
-    "storageAccountName": "[concat(uniquestring(resourceGroup().id), 'sawinvm')]",
-    "nicName": "myVMNic",
+    "storageAccountName": "[concat(parameters('itemPrefix'), uniquestring(resourceGroup().id))]",
+    "nicName": "[concat(parameters('itemPrefix'), '-nic')]",
     "addressPrefix": "10.0.0.0/16",
     "subnetName": "Subnet",
     "subnetPrefix": "10.0.0.0/24",
-    "publicIPAddressName": "myPublicIP",
-    "vmName": "SimpleWinVM",
-    "virtualNetworkName": "MyVNET",
+    "publicIPAddressName": "[concat(parameters('itemPrefix'), '-ip')]",
+    "vmName": "[concat(parameters('itemPrefix'), '-vm')]",
+    "virtualNetworkName": "[concat(parameters('itemPrefix'), '-vnet')]",
     "subnetRef": "[resourceId('Microsoft.Network/virtualNetworks/subnets', variables('virtualNetworkName'), variables('subnetName'))]",
-    "networkSecurityGroupName": "default-NSG"
+    "networkSecurityGroupName": "[concat(parameters('itemPrefix'), '-nsg')]",
+    "domainNameLabel": "[concat(parameters('itemPrefix'), '-dnl')]"
   },
   "resources": [
     {
@@ -77,7 +79,7 @@
       "properties": {
         "publicIPAllocationMethod": "Dynamic",
         "dnsSettings": {
-          "domainNameLabel": "[parameters('dnsLabelPrefix')]"
+          "domainNameLabel": "[variables('domainNameLabel')]"
         }
       }
     },
