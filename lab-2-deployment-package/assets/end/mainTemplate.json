@@ -20,6 +20,12 @@
         "description": "Unique string used to prefix resource names created in the project."
       }
     },
+    "storageAccountName": {
+        "type": "string"
+    },
+    "storageAccountType": {
+        "type": "string"
+    },
     "windowsOSVersion": {
       "type": "string",
       "defaultValue": "2022-Datacenter",
@@ -47,26 +53,26 @@
     }
   },
   "variables": {
-    "storageAccountName": "[concat(parameters('itemPrefix'), uniquestring(resourceGroup().id))]",
-    "nicName": "[concat(parameters('itemPrefix'), '-nic')]",
     "addressPrefix": "10.0.0.0/16",
+    "domainNameLabel": "[concat(parameters('itemPrefix'), '-dnl')]",
+    "networkSecurityGroupName": "[concat(parameters('itemPrefix'), '-nsg')]",
+    "nicName": "[concat(parameters('itemPrefix'), '-nic')]",
+    "publicIPAddressName": "[concat(parameters('itemPrefix'), '-ip')]",
+    "storageAccountName": "[concat(parameters('itemPrefix'), uniquestring(resourceGroup().id))]",
     "subnetName": "Subnet",
     "subnetPrefix": "10.0.0.0/24",
-    "publicIPAddressName": "[concat(parameters('itemPrefix'), '-ip')]",
-    "vmName": "[concat(parameters('itemPrefix'), '-vm')]",
-    "virtualNetworkName": "[concat(parameters('itemPrefix'), '-vnet')]",
     "subnetRef": "[resourceId('Microsoft.Network/virtualNetworks/subnets', variables('virtualNetworkName'), variables('subnetName'))]",
-    "networkSecurityGroupName": "[concat(parameters('itemPrefix'), '-nsg')]",
-    "domainNameLabel": "[concat(parameters('itemPrefix'), '-dnl')]"
+    "virtualNetworkName": "[concat(parameters('itemPrefix'), '-vnet')]",
+    "vmName": "[concat(parameters('itemPrefix'), '-vm')]"
   },
   "resources": [
     {
       "type": "Microsoft.Storage/storageAccounts",
       "apiVersion": "2021-08-01",
-      "name": "[variables('storageAccountName')]",
+      "name": "[parameters('storageAccountName')]",
       "location": "[parameters('location')]",
       "sku": {
-        "name": "Standard_LRS"
+        "name": "[parameters('storageAccountType')]"
       },
       "kind": "Storage",
       "properties": {}

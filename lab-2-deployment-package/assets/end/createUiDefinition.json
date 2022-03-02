@@ -50,12 +50,58 @@
           "visible": true
         }
       ],
-      "steps": [],
+      "steps": [
+        {
+            "name": "storageConfig",
+            "label": "Storage account settings",
+            "elements": [
+                {
+                    "name": "storageAccount",
+                    "type": "Microsoft.Storage.MultiStorageAccountCombo",
+                    "label": {
+                        "prefix": "Storage account name",
+                        "type": "Storage account type"
+                    },
+                    "toolTip": {
+                        "prefix": "The name of the storage account",
+                        "type": "The type of storage account"
+                    },
+                    "defaultValue": {
+                        "type": "Standard_LRS"
+                    },
+                    "constraints": {
+                        "allowedTypes": [
+                            "Premium_LRS",
+                            "Standard_LRS",
+                            "Standard_GRS"
+                        ]
+                    }
+                }
+            ]
+        },
+        {
+            "name": "tags",
+            "label": "Tags",
+            "elements": [
+                {
+                    "name": "tagsByResource",
+                    "type": "Microsoft.Common.TagsByResource",
+                    "toolTip": "Tags for resources being created",
+                    "resources": [
+                        "Microsoft.Storage/storageAccounts",
+                        "Microsoft.Compute/virtualMachines"
+                    ]
+                }
+            ]
+        }
+      ],
       "outputs": {
-        "adminUsername": "[basics('username')]",
         "adminPassword": "[basics('password').password]",
+        "adminUsername": "[basics('username')]",
         "itemPrefix": "[basics('itemPrefix')]",
-        "location": "[location()]"
+        "location": "[location()]",
+        "storageAccountName": "[steps('storageConfig').storageAccount.prefix]",
+        "storageAccountType": "[steps('storageConfig').storageAccount.type]"
       }
     }
   }
