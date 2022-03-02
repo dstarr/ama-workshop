@@ -30,9 +30,9 @@ If you are not on Windows you may download PowerShell for your platform.
 4. Now, from the same directory you may execute the ARM TTK tool like so.
 
 > ```powershell
-> $TemplateFileOrFolder = "<PATH TO AMA-WORKSHOP>\lab-2-deployment-package\assets\before"
+> $AMAPackage = "<PATH TO AMA-WORKSHOP>\ama-workshop\lab-2-deployment-package\assets\before"
 > 
-> Test-AzTemplate -TemplatePath $TemplateFileOrFolder
+> Test-AzTemplate -TemplatePath $AMAPackage
 > ```
 
 5. Run ARM TTK against the JSON files in the `` directory.
