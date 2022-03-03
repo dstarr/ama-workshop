@@ -14,12 +14,12 @@
         "description": "Password for the Virtual Machine."
       }
     },
-    "itemPrefix": {
-      "type": "string",
-      "metadata": {
-        "description": "Unique string used to prefix resource names created in the project."
-      }
-    },
+      "itemPrefix": {
+        "type": "string",
+        "metadata": {
+          "description": "Unique string used to prefix resource names created in the project."
+        }
+      },
     "storageAccountName": {
         "type": "string"
     },
