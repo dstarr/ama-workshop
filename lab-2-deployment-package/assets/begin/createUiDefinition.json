@@ -3,8 +3,167 @@
     "handler": "Microsoft.Azure.CreateUIDef",
     "version": "0.1.2-preview",
     "parameters": {
-        "basics": [],
-        "steps": [],
-        "outputs": {}
+        "basics": [
+            {}
+        ],
+        "steps": [
+            {
+                "name": "prefixBlade",
+                "bladeTitle": "Item Prefix",
+                "label": "Item Prefix",
+                "elements": [
+                    {
+                        "name": "prefixInfoBox",
+                        "type": "Microsoft.Common.InfoBox",
+                        "visible": true,
+                        "options": {
+                            "icon": "Info",
+                            "text": "This value will be used as a prefix to all resources created by this solution, with the exception of the storage account."
+                        }
+                    },
+                    {
+                        "name": "itemPrefix",
+                        "type": "Microsoft.Common.TextBox",
+                        "label": "Item prefix",
+                        "defaultValue": "",
+                        "toolTip": "The prefix pre-prended to all created resources in the solution.",
+                        "constraints": {
+                            "required": true,
+                            "regex": "^[a-zA-Z|[a-zA-Z0-9]{2}$",
+                            "validationMessage": "Only alphanumeric characters are allowed, and the value must be 3 characters long."
+                        },
+                        "visible": true
+                    }
+                ]
+            },
+            {
+                "name": "storageConfigBlade",
+                "label": "Storage account settings",
+                "bladeTitle": "Storage account settings",
+                "elements": [
+                    {
+                        "name": "storageAccount",
+                        "type": "Microsoft.Storage.MultiStorageAccountCombo",
+                        "label": {
+                            "prefix": "Storage account name",
+                            "type": "Storage account type"
+                        },
+                        "toolTip": {
+                            "prefix": "The name of the storage account",
+                            "type": "The type of storage account"
+                        },
+                        "defaultValue": {
+                            "type": "Standard_LRS"
+                        },
+                        "constraints": {
+                            "allowedTypes": [
+                                "Premium_LRS",
+                                "Standard_LRS",
+                                "Standard_GRS"
+                            ]
+                        }
+                    }
+                ]
+            },
+            {
+                "name": "vmBlade",
+                "bladeTitle": "Virtual Machine",
+                "label": "Virtual Machine",
+                "elements": [
+                    {
+                        "name": "username",
+                        "type": "Microsoft.Common.TextBox",
+                        "label": "User name",
+                        "defaultValue": "",
+                        "toolTip": "Use only allowed characters",
+                        "constraints": {
+                            "required": true,
+                            "regex": "^[a-z0-9A-Z]{6,30}$",
+                            "validationMessage": "Only alphanumeric characters are allowed, and the value must be 6-30 characters long."
+                        },
+                        "visible": true
+                    },
+                    {
+                        "name": "password",
+                        "type": "Microsoft.Compute.CredentialsCombo",
+                        "label": {
+                            "password": "Password",
+                            "confirmPassword": "Confirm password"
+                        },
+                        "toolTip": {
+                            "password": "Provide a password"
+                        },
+                        "constraints": {
+                            "required": true
+                        },
+                        "options": {
+                            "hideConfirmation": false
+                        },
+                        "osPlatform": "Windows",
+                        "visible": true
+                    },
+                    {
+                        "name": "operatingSystem",
+                        "type": "Microsoft.Common.DropDown",
+                        "label": "Windows operating system",
+                        "defaultValue": "2022-Datacenter",
+                        "toolTip": "Choose an operating system to deploy",
+                        "constraints": {
+                            "allowedValues": [
+                                {
+                                    "label": "2019 Datacenter Server",
+                                    "value": "2019-Datacenter"
+                                },
+                                {
+                                    "label": "2022 Datacenter Server",
+                                    "value": "2022-Datacenter"
+                                }
+                            ],
+                            "required": true
+                        },
+                        "visible": true
+                    },
+                    {
+                        "name": "vmSize",
+                        "type": "Microsoft.Compute.SizeSelector",
+                        "label": "Virtual machine size",
+                        "toolTip": "Choose the size of virtual machine to create",
+                        "recommendedSizes": [
+                            "Standard_D2s_v3"
+                        ],
+                        "options": {
+                            "hideDiskTypeFilter": false
+                        },
+                        "osPlatform": "Windows",
+                        "visible": true
+                    }
+                ]
+            },
+            {
+                "name": "tags",
+                "label": "Tags",
+                "elements": [
+                    {
+                        "name": "tagsByResource",
+                        "type": "Microsoft.Common.TagsByResource",
+                        "toolTip": "Tags for resources being created",
+                        "resources": [
+                            "Microsoft.Storage/storageAccounts",
+                            "Microsoft.Compute/virtualMachines"
+                        ]
+                    }
+                ]
+            }
+        ],
+        "outputs": {
+            "adminPassword": "[steps('vmBlade').username]",
+            "adminUserName": "[steps('vmBlade').password]",
+            "windowsOSVersion": "[steps('vmBlade').operatingSystem]",
+            "vmSize": "[steps('vmBlade').vmSize]",
+            "itemPrefix": "[steps('prefixBlade').itemPrefix']",
+            "location": "[location()]",
+            "storageAccountName": "[steps('storageConfigBlade').storageAccount.prefix]",
+            "storageAccountType": "[steps('storageConfigBlade').storageAccount.type]"
+        }
     }
 }
