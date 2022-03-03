@@ -503,7 +503,7 @@ The main components of a `createUiDefinition.json` file looks like this.
   "label": "Virtual Machine",
   "elements": [
       {
-          "name": "username",
+          "name": "adminUsername",
           "type": "Microsoft.Common.TextBox",
           "label": "User name",
           "defaultValue": "",
@@ -516,7 +516,7 @@ The main components of a `createUiDefinition.json` file looks like this.
           "visible": true
       },
       {
-          "name": "password",
+          "name": "adminPassword",
           "type": "Microsoft.Compute.CredentialsCombo",
           "label": {
               "password": "Password",
@@ -597,8 +597,8 @@ Now that you have all of the steps defined in your `createUiDefinition.json` fil
 
 ```json
 "outputs": {
-    "adminPassword": "[steps('vmBlade').username]",
-    "adminUserName": "[steps('vmBlade').password]",
+    "adminPassword": "[steps('vmBlade').adminPassword]",
+    "adminUsername": "[steps('vmBlade').adminUsername]",
     "windowsOSVersion": "[steps('vmBlade').operatingSystem]",
     "vmSize": "[steps('vmBlade').vmSize]",
     "itemPrefix": "[steps('prefixBlade').itemPrefix']",
