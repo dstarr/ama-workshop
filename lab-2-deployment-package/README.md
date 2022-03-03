@@ -27,31 +27,115 @@ If you are not on Windows you may download PowerShell for your platform.
 > Import-Module .\arm-ttk.psd1
 > ```
 
-4. Now, from the same directory you may execute the ARM TTK tool like so.
+4. Now, from the same directory you may execute the ARM TTK tool like so. Note the path is looking at the **end** folder, which contains the solution to this lab.
 
-> ```powershell
-> $AMAPackage = "<PATH TO AMA-WORKSHOP>\ama-workshop\lab-2-deployment-package\assets\before"
-> 
-> Test-AzTemplate -TemplatePath $AMAPackage
-> ```
+```powershell
+$AMAPackage = "<PATH TO AMA-WORKSHOP>\ama-workshop\lab-2-deployment-package\assets\end"
 
-5. Run ARM TTK against the JSON files in the `` directory.
-6. See that test pass. The output from ARM TTK should look something like this.
+Test-AzTemplate -TemplatePath $AMAPackage
+```
 
-> 
+5. See that test pass. The output from ARM TTK should look something like this.
 
-7. 
+```
+Validating end\createUiDefinition.json
+  AllFiles
+    [+] JSONFiles Should Be Valid (61 ms)
+  CreateUIDefinition
+    [+] Allowed Values Should Actually Be Allowed (190 ms)
 
+    ...
 
+Validating end\mainTemplate.json
+  deploymentTemplate
+    [+] adminUsername Should Not Be A Literal (90 ms)
+    [+] apiVersions Should Be Recent In Reference Functions (171 ms)
 
+    ...
+```
+
+> You will use the **ARM TTK** tool to check the status of your package files several times during this lab. Do not close the terminal window.
 
 ## Exercise 3 - mainTemplate.json
 
-Here you will build out a reasonably complex ARM template that deploys a virtual machine and its needed networking components. 
+Here you will build out a reasonably complex ARM template that deploys a virtual machine and its needed networking components.
+
+The basic outline of an ARM template looks like this. You will fill in the sections that are currently empty.
+
+```json
+{
+  "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
+  "contentVersion": "1.0.0.0",
+  "parameters": {},
+  "variables": {},
+  "resources": [],
+  "outputs": {}
+}
+```
+
+1. Set up ARM TTK to point at the **begin** for validation.
+
+ ```powershell
+ $AMAPackage = "<PATH TO AMA-WORKSHOP>\ama-workshop\lab-2-deployment-package\assets\begin\"
+```
+
+2. Run the tests. They should all pass.
+
+ ```powershell
+ Test-AzTemplate -TemplatePath $AMAFile
+```
+
+# HERE TODO
+
+### Parameters
+
+There are several parameters the ARM template expects. You will fill them in and take note of the different types of parameters.
+
+1. Add the following parameters to the ARM template.
+
+```json
+    "adminUsername": {
+      "type": "string",
+      "metadata": {
+        "description": "Username for the Virtual Machine."
+      }
+    },
+    "adminPassword": {
+      "type": "securestring",
+      "metadata": {
+        "description": "Password for the Virtual Machine."
+      }
+    }
+```
+
+2. Run ARM TTK. The tests 
+
+### Variables
+
+### Resources
+
+### Outputs
 
 ## Exercise 4 - createUiDefinition.json
 
 This exercise will take you through creating the file that defines the user experience for installing your solution via the `mainTemplate.json` created above.
+
+The main components of a `createUiDefinition.json` file looks like this.
+
+```json
+{
+    "$schema": "https://schema.management.azure.com/schemas/0.1.2-preview/CreateUIDefinition.MultiVm.json#",
+    "handler": "Microsoft.Azure.CreateUIDef",
+    "version": "0.1.2-preview",
+    "parameters": {
+        "basics": [],
+        "steps": [],
+        "outputs": {}
+    }
+}
+```
+
+This is what the file in your **begin** folder looks like. You will fill in the pieces as you go.
 
 ## Exercise 5 - Publishing your deployment package
 
