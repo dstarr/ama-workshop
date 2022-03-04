@@ -14,24 +14,18 @@
         "description": "Password for the Virtual Machine."
       }
     },
-      "itemPrefix": {
-        "type": "string",
-        "metadata": {
-          "description": "Unique string used to prefix resource names created in the project."
-        }
-      },
     "storageAccountName": {
-        "type": "string"
+      "type": "string"
     },
     "storageAccountType": {
-        "type": "string"
+      "type": "string"
     },
     "windowsOSVersion": {
       "type": "string",
-      "defaultValue": "2022-Datacenter",
+      "defaultValue": "2019-datacenter-gensecond",
       "allowedValues": [
-        "2019-Datacenter",
-        "2022-Datacenter"
+        "2019-datacenter-gensecond",
+        "2016-datacenter-gensecond"
       ],
       "metadata": {
         "description": "The Windows version for the VM. This will pick a fully patched image of this given Windows version."
@@ -44,6 +38,13 @@
         "description": "Size of the virtual machine."
       }
     },
+    "vmName": {
+      "type": "string",
+      "defaultValue": "amaSimpleVM",
+      "metadata": {
+        "description": "Name of the virtual machine."
+      }
+    },
     "location": {
       "type": "string",
       "defaultValue": "[resourceGroup().location]",
@@ -53,23 +54,23 @@
     }
   },
   "variables": {
+    "itemPrefix": "[concat('ama', uniqueString(resourceGroup().id))]",
     "addressPrefix": "10.0.0.0/16",
-    "domainNameLabel": "[concat(parameters('itemPrefix'), '-dnl')]",
-    "networkSecurityGroupName": "[concat(parameters('itemPrefix'), '-nsg')]",
-    "nicName": "[concat(parameters('itemPrefix'), '-nic')]",
-    "publicIPAddressName": "[concat(parameters('itemPrefix'), '-ip')]",
-    "storageAccountName": "[concat(parameters('itemPrefix'), uniquestring(resourceGroup().id))]",
+    "domainNameLabel": "[concat(variables('itemPrefix'), '-dnl')]",
+    "networkSecurityGroupName": "[concat(variables('itemPrefix'), '-nsg')]",
+    "nicName": "[concat(variables('itemPrefix'), '-nic')]",
+    "publicIPAddressName": "[concat(variables('itemPrefix'), '-ip')]",
+    "storageAccountName": "[concat(parameters('storageAccountName'), uniqueString('storage'))]",
     "subnetName": "Subnet",
     "subnetPrefix": "10.0.0.0/24",
     "subnetRef": "[resourceId('Microsoft.Network/virtualNetworks/subnets', variables('virtualNetworkName'), variables('subnetName'))]",
-    "virtualNetworkName": "[concat(parameters('itemPrefix'), '-vnet')]",
-    "vmName": "[concat(parameters('itemPrefix'), '-vm')]"
+    "virtualNetworkName": "[concat(variables('itemPrefix'), '-vnet')]"
   },
   "resources": [
     {
       "type": "Microsoft.Storage/storageAccounts",
       "apiVersion": "2021-08-01",
-      "name": "[parameters('storageAccountName')]",
+      "name": "[variables('storageAccountName')]",
       "location": "[parameters('location')]",
       "sku": {
         "name": "[parameters('storageAccountType')]"
@@ -123,7 +124,7 @@
       ],
       "properties": {
         "addressSpace": {
-          "addressPrefixes": ["[variables('addressPrefix')]"]
+          "addressPrefixes": [ "[variables('addressPrefix')]" ]
         },
         "subnets": [
           {
@@ -167,7 +168,7 @@
     {
       "type": "Microsoft.Compute/virtualMachines",
       "apiVersion": "2020-06-01",
-      "name": "[variables('vmName')]",
+      "name": "[parameters('vmName')]",
       "location": "[parameters('location')]",
       "identity": {
         "type": "systemAssigned"
@@ -181,7 +182,7 @@
           "vmSize": "[parameters('vmSize')]"
         },
         "osProfile": {
-          "computerName": "[variables('vmName')]",
+          "computerName": "[parameters('vmName')]",
           "adminUsername": "[parameters('adminUsername')]",
           "adminPassword": "[parameters('adminPassword')]"
         },
@@ -216,21 +217,6 @@
             "storageUri": "[reference(resourceId('Microsoft.Storage/storageAccounts/', variables('storageAccountName'))).primaryEndpoints.blob]"
           }
         }
-      }
-    },
-    {
-      "apiVersion": "2020-04-01-preview",
-      "name": "[guid(resourceGroup().id)]",
-      "type": "Microsoft.Authorization/roleAssignments",
-      "dependsOn": [
-        "[resourceId('Microsoft.Compute/virtualMachines', variables('vmName'))]"
-      ],
-      "properties": {
-        "roleDefinitionId": "[subscriptionResourceId('Microsoft.Authorization/roleDefinitions', 'acdd72a7-3385-48ef-bd42-f606fba81ae7')]",
-        "principalId": "[reference(variables('vmName'),'2021-11-01', 'Full').identity.principalId]",
-        "delegatedManagedIdentityResourceId": "[resourceId('Microsoft.Compute/virtualMachines', variables('vmName'))]", 
-        "scope": "[resourceGroup().id]",
-        "principalType": "ServicePrincipal"
       }
     }
   ],
