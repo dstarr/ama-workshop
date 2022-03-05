@@ -1,6 +1,6 @@
 # Lab 2 - The Managed Application Deployment Package
 
-In this lab you will edit the artifacts that go into a an Azure Managed Application deployment package. You will run your artifacts through a validation process and package them for use in deployment. Finally, you will create a new plan for your existing offer from [Lab 1](../lab-1-partner-center/README.md) and publish your offer.
+In this lab, you will edit the artifacts that go into a an Azure Managed Application deployment package. You will run your artifacts through a validation process and package them for use in deployment. Finally, you will create a new plan for your existing offer from [Lab 1](../lab-1-partner-center/README.md) and publish your offer.
 
 ## Exercise 1 - ARM TTK
 
@@ -150,16 +150,17 @@ There are several parameters the ARM template expects. You will fill them in and
 
 ```json
 "variables": {
+  "itemPrefix": "[concat('ama', uniqueString(resourceGroup().id))]",
   "addressPrefix": "10.0.0.0/16",
-  "domainNameLabel": "[concat(parameters('itemPrefix'), '-dnl')]",
-  "networkSecurityGroupName": "[concat(parameters('itemPrefix'), '-nsg')]",
-  "nicName": "[concat(parameters('itemPrefix'), '-nic')]",
-  "publicIPAddressName": "[concat(parameters('itemPrefix'), '-ip')]",
-  "storageAccountName": "[concat(parameters('itemPrefix'), uniquestring(resourceGroup().id))]",
+  "domainNameLabel": "[concat(variables('itemPrefix'), '-dnl')]",
+  "networkSecurityGroupName": "[concat(variables('itemPrefix'), '-nsg')]",
+  "nicName": "[concat(variables('itemPrefix'), '-nic')]",
+  "publicIPAddressName": "[concat(variables('itemPrefix'), '-ip')]",
+  "storageAccountName": "[concat(parameters('storageAccountName'), uniqueString('storage'))]",
   "subnetName": "Subnet",
   "subnetPrefix": "10.0.0.0/24",
-  "virtualNetworkName": "[concat(parameters('itemPrefix'), '-vnet')]",
-  "vmName": "[concat(parameters('itemPrefix'), '-vm')]"
+  "subnetRef": "[resourceId('Microsoft.Network/virtualNetworks/subnets', variables('virtualNetworkName'), variables('subnetName'))]",
+  "virtualNetworkName": "[concat(variables('itemPrefix'), '-vnet')]"
 }
 ```
 
@@ -399,7 +400,7 @@ The Create UI Definition Sandbox is a tool for testing `createUiDefinition.json`
 5. On the left side of the sandbox, note there is a list of controls. Copy the TextBox control into your clipboard.
 6. In your `createUiDefinition` file, paste the control into the `elements` array of the JSON blade.
 7. Check your JSON in the sandbox.
-8. Remove the blade definition from the `steps[]` array in the `createUiDefinition.json` file so that the array is.
+8. Remove the blade definition from the `steps[]` array in the `createUiDefinition.json` file so that the array is empty.
 9. Fill in the `steps[]` array with the JSON below.
 
 ```json
