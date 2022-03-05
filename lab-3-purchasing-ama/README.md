@@ -94,8 +94,8 @@ In this exercise you will go through the process of buying your Gold plan, creat
    1. Basics tab
       1. **Resource group:** ama_workshop_purchases
       2. **Region:** Any one near you
-      3. **Application name:** workshopapp2
-      4. **Managed Resource Group**: workshopapp2-mrg
+      3. **Application name:** amaworksopgold01
+      4. **Managed Resource Group**: amaworksopgold01-mrg
    2. Storage account settings
       1. **Storage account prefix:** Any 3-5 alphanumeric value that is accepted
       2. **Storage account type:** Standard_LRS
