@@ -25,3 +25,28 @@ Lab 3 - [Purchasing an Azure Managed Application](./lab-3-purchasing-ama/README.
 Lab 4 - [Administering Your Purchased Managed Applications](./lab-4-administer-my-amas/README.md)
 
 Lab 5 - [Administering Your Customer’s Managed Applications](./lab-5-administer-customer-amas/README.md)
+
+
+## Additional resources
+
+- [Marketplace Samples and Resources](aka.ms/MarketplaceSamples
+)
+  - Client libraries
+  - Sample projects and repositories
+  - Pointers to educational resources
+- [Mastering the Marketplace Learning Library](aka.ms/MasteringTheMarketplace
+)
+- [Marketplace Webinars](aka.ms/MarketplaceOfficeHours
+)
+    - Business and technical
+    - Live sessions and recordings
+- [Marketplace on Microsoft Learn](aka.ms/LearnMarketplace
+)
+- [SaaS Accelerator](aka.ms/SaaSAccelerator
+)
+- [Azure for Executives Podcast](https://aka.ms/AzureForExecs
+)
+
+
+
+
