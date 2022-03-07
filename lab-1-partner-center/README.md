@@ -100,8 +100,8 @@ In this exercise, you fill out the **Offer listing** page.
 3. In the Short description text area, enter "**AMA Workshop 1 short description**".
 4. In the **Description** text area, enter "**AMA Workshop 1 description**".
 5. In the **Search keywords** section, you may enter up to 3 keywords.
-6. For the **Privacy policy link** textbox, you may use Microsoft's privacy policy for this workshop. Enter "https://privacy.microsoft.com/en-us/privacystatement".
-7. Scroll down to the **Support contact** section and enter the required information. For the field **Support website for Azure Global customers**, enter the link "https://partner.microsoft.com/en-US/support/v2/".
+6. For the **Privacy policy link** textbox, you may use Microsoft's privacy policy for this workshop. Enter "https://privacy.microsoft.com/en-us/privacystatement". This is for lab purposes. Do not use Microsoft's privacy policy on real offers.
+7. Scroll down to the **Support contact** section and enter the required information. For the field **Support website for Azure Global customers**, enter the link "https://partner.microsoft.com/en-US/support/v2/". Again, this is for lab purposes only, not to be used in a live offer. This would be a link to a page on your own site.
 8. Scroll down to the **Engineering contact information** section.
 9. Enter the required information.
 10. Scroll down to the **Marketplace media > Logos** section.
