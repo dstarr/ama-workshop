@@ -478,7 +478,7 @@ The Create UI Definition Sandbox is a tool for testing `createUiDefinition.json`
                         "constraints": {
                             "required": true,
                             "regex": "^[a-zA-Z0-9]{12}$",
-                            "validationMessage": "Password must be at least 8 characters long, contain only numbers and letters"
+                            "validationMessage": "Password must be at least 12 characters long, contain only numbers and letters"
                         },
                         "options": {
                             "hideConfirmation": false
