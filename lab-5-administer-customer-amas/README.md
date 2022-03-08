@@ -73,5 +73,3 @@ Congratulations, you have completed Lab 5. In this lab, you did the following.
 1. Learned about the Managed Application Center inside the Azure portal.
 2. Deleted and created a resource within the customer's Managed Resource Group.
 3. Deleted a customer's Azure Managed Application.
-
-
